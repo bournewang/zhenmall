@@ -1,0 +1,139 @@
+.px-view {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.py-view {
+    padding-top: .5rem;
+    padding-bottom: 3rem;
+}
+
+.w-sidebar {
+    width: 9.75rem;
+    background: #275f8a;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.w-sidebar.h-header{
+    background: #5693c1;
+}
+.content {
+    max-width: calc(100vw - 9.75rem);
+}
+
+.content > div.h-header{
+    background: #5693c1;
+}
+.content > div.h-header span{
+    color: white;
+}
+.content > div>.relative {min-height: 80vh;}
+.content > div>.relative > div.mb-3{margin-bottom: 0;}
+
+.mb-6 {
+    margin-bottom: 0.5rem;
+}
+
+ul.sidemenu ul.dropdown-menu li svg {
+    height: 1rem;
+    margin-top: 0;
+}
+
+.sidebar-dropdown>.dropdown-menu li {
+    margin-left: 1em;
+}
+.nova-detached-filters-card {
+    display: flex;
+    flex-direction: row;
+}
+.nova-detached-filters-card .detached-filters {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.nova-detached-filters-card .detached-filters-buttons{
+    position: relative !important;
+    top: 0 !important;
+    padding-top: 1em;
+    display: flex;
+}
+.nova-detached-filters-card .detached-filters-buttons .detached-filters-button svg {
+    cursor: pointer;
+    background: url(/images/clear.png);
+    background-size: cover;
+}
+.nova-detached-filters-card .detached-filters-buttons .detached-filters-button svg path{
+    display: none;
+}
+
+/* .nova-detached-filters-card .detached-filters .detached-filter h3{display: none;} */
+div[dusk$="index-component"] h1{
+    float: left;
+    margin-top: 0.2em;
+    margin-bottom: 0;
+    padding-right: 0.5em;
+}
+div[dusk$="index-component"] .table.table-grid td {
+    max-width: 20vw !important;
+    overflow-x: hidden;
+}
+div[dusk$="index-component"] .table.table-grid td .whitespace-no-wrap{
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+div[dusk$="index-component"] .card > .flex.items-center {padding-top: 1px; padding-bottom: 1px;}
+div[dusk$="detail-component"] a[dusk="attach-button"],
+div[dusk$="detail-component"] a[dusk$="attached-button"],
+div[dusk$="detail-component"] button[dusk$="delete-button"]
+/* div[dusk$="detail-component"] div[dusk$="index-component"] div.relative.h-9.flex-no-shrink.mb-6, */
+/* div[dusk$="detail-component"] div[dusk$="index-component"] div.flex.items-center.py-3.border-b.border-50 */
+{
+    display: none;
+}
+div[dusk$="detail-component"] .simple-repeatable-header-row{
+    display: none;
+}
+div[dusk$="detail-component"] > div > div.card  div.py-4,
+form > div > div.card  .flex.border-b.border-40 > .py-6
+ {
+   padding-top: .3rem;
+   padding-bottom: .3rem;
+}
+form > div > div.card  .flex.border-b.border-40 > .px-8{
+    padding-left: .3rem;
+    padding-right: .3rem;
+}
+div[dusk$="detail-component"] > div > div.card > div.flex
+/* div[dusk$="detail-component"] > div > div.card > .tab-content > div > div.flex */
+/* form > div > div.card  .flex.border-b.border-40  */
+{
+    width: 50%;
+    float: left;
+}
+div[dusk$="detail-component"] div.card:after,
+form > div > div.card:after
+/* form > div > div.card > div.relationship-tabs-panel > div:after */
+{
+    content:".";
+    display:block;
+    height:0;
+    visibility:hidden;
+    clear:both;
+}
+div[dusk="stores-detail-component"] a[dusk="attach-button"] {
+    display: block;
+}
+
+button.group-control[dusk="collapse-group"] {
+    display: none;
+}
+
+table.vxe-table--body{margin-bottom: 5em;}
+
+a.card-panel .p-6{padding: 16px;}
+
+.key-value-item textarea {
+    height: 2em !important;
+    padding-top: 0.3em;
+    /* padding-bottom: 0.5em; */
+    min-height: 1.5em;
+}

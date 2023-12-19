@@ -1,0 +1,237 @@
+{
+  "status": 0,
+  "msg": "请求成功",
+  "serviceTime": "20210722171757",
+  "results": [
+    {
+      "categoryId": 1,
+      "categoryName": "宠物生活",
+      "pid": 0
+    },
+    {
+      "categoryId": 2,
+      "categoryName": "家居生活",
+      "pid": 0
+    },
+    {
+      "categoryId": 3,
+      "categoryName": "母婴儿童",
+      "pid": 0
+    },
+    {
+      "categoryId": 5,
+      "categoryName": "潮流服饰",
+      "pid": 0
+    },
+    {
+      "categoryId": 6,
+      "categoryName": "营养保健",
+      "pid": 0
+    },
+    {
+      "categoryId": 7,
+      "categoryName": "进口美食",
+      "pid": 0
+    },
+    {
+      "categoryId": 8,
+      "categoryName": "美妆护肤",
+      "pid": 0
+    },
+    {
+      "categoryId": 11,
+      "categoryName": "狗狗",
+      "pid": 1
+    },
+    {
+      "categoryId": 12,
+      "categoryName": "猫咪",
+      "pid": 1
+    },
+    {
+      "categoryId": 17,
+      "categoryName": "清洁个护",
+      "pid": 0
+    },
+    {
+      "categoryId": 18,
+      "categoryName": "洗发护发",
+      "pid": 17
+    },
+    {
+      "categoryId": 20,
+      "categoryName": "粮油米面",
+      "pid": 2
+    },
+    {
+      "categoryId": 23,
+      "categoryName": "箱包手袋",
+      "pid": 0
+    },
+    {
+      "categoryId": 26,
+      "categoryName": "男包",
+      "pid": 23
+    },
+    {
+      "categoryId": 27,
+      "categoryName": "女包",
+      "pid": 23
+    },
+    {
+      "categoryId": 28,
+      "categoryName": "拉杆箱",
+      "pid": 23
+    },
+    {
+      "categoryId": 29,
+      "categoryName": "男装",
+      "pid": 5
+    },
+    {
+      "categoryId": 30,
+      "categoryName": "女装",
+      "pid": 5
+    },
+    {
+      "categoryId": 31,
+      "categoryName": "内衣/睡衣",
+      "pid": 5
+    },
+    {
+      "categoryId": 32,
+      "categoryName": "配饰",
+      "pid": 5
+    },
+    {
+      "categoryId": 33,
+      "categoryName": "彩妆",
+      "pid": 8
+    },
+    {
+      "categoryId": 34,
+      "categoryName": "香水",
+      "pid": 8
+    },
+    {
+      "categoryId": 35,
+      "categoryName": "面部保养",
+      "pid": 8
+    },
+    {
+      "categoryId": 36,
+      "categoryName": "美妆工具",
+      "pid": 8
+    },
+    {
+      "categoryId": 37,
+      "categoryName": "颈部护理",
+      "pid": 8
+    },
+    {
+      "categoryId": 38,
+      "categoryName": "口腔护理",
+      "pid": 17
+    },
+    {
+      "categoryId": 39,
+      "categoryName": "身体护理",
+      "pid": 17
+    },
+    {
+      "categoryId": 40,
+      "categoryName": "女性健康",
+      "pid": 17
+    },
+    {
+      "categoryId": 41,
+      "categoryName": "奶粉",
+      "pid": 3
+    },
+    {
+      "categoryId": 42,
+      "categoryName": "营养辅食",
+      "pid": 3
+    },
+    {
+      "categoryId": 43,
+      "categoryName": "哺喂用具",
+      "pid": 3
+    },
+    {
+      "categoryId": 44,
+      "categoryName": "洗护清洁",
+      "pid": 3
+    },
+    {
+      "categoryId": 45,
+      "categoryName": "尿裤纸巾",
+      "pid": 3
+    },
+    {
+      "categoryId": 46,
+      "categoryName": "孕产妇用品",
+      "pid": 3
+    },
+    {
+      "categoryId": 47,
+      "categoryName": "童车童床",
+      "pid": 3
+    },
+    {
+      "categoryId": 48,
+      "categoryName": "童装童鞋",
+      "pid": 3
+    },
+    {
+      "categoryId": 49,
+      "categoryName": "玩具",
+      "pid": 3
+    },
+    {
+      "categoryId": 50,
+      "categoryName": "厨房小家电",
+      "pid": 2
+    },
+    {
+      "categoryId": 51,
+      "categoryName": "生活小家电",
+      "pid": 2
+    },
+    {
+      "categoryId": 52,
+      "categoryName": "清洁用品",
+      "pid": 2
+    },
+    {
+      "categoryId": 53,
+      "categoryName": "休闲零食",
+      "pid": 7
+    },
+    {
+      "categoryId": 54,
+      "categoryName": "咖啡冲饮",
+      "pid": 7
+    },
+    {
+      "categoryId": 55,
+      "categoryName": "日常营养",
+      "pid": 6
+    },
+    {
+      "categoryId": 56,
+      "categoryName": "增强体质",
+      "pid": 6
+    },
+    {
+      "categoryId": 57,
+      "categoryName": "女性健康",
+      "pid": 6
+    },
+    {
+      "categoryId": 58,
+      "categoryName": "男士必备",
+      "pid": 6
+    }
+  ]
+}

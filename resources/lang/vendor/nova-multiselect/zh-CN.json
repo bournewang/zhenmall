@@ -1,0 +1,15 @@
+{
+  "novaMultiselect.maxElements": "最多只能选:max个",
+  "novaMultiselect.noResult": "没有结果",
+  "novaMultiselect.noOptions": "空列表",
+  "novaMultiselect.limitText": "添加:count",
+  "novaMultiselect.selectLabel": "按回车键选择",
+  "novaMultiselect.selectGroupLabel": "按回车键选择组",
+  "novaMultiselect.selectedLabel": "已选",
+  "novaMultiselect.deselectLabel": "按回车键移除",
+  "novaMultiselect.deselectGroupLabel": "按回车键取消选中的组",
+  "novaMultiselect.placeholder": "选择",
+  "novaMultiselect.nItemsSelected": "已选择:count个",
+  "novaMultiselect.reorder": "重新排序",
+  "novaMultiselect.doneReordering": "已排序"
+}

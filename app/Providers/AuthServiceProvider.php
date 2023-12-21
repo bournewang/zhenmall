@@ -29,6 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Setting' 	=> 'App\Policies\SettingPolicy',
         'App\Models\Store'  	=> 'App\Policies\StorePolicy',
         'App\Models\User'   	=> 'App\Policies\UserPolicy',
+        'App\Models\BalanceLog' => 'App\Policies\BalanceLogPolicy',
+        'App\Models\QuotaLog'   => 'App\Policies\QuotaLogPolicy',
+        'App\Models\Withdraw'   => 'App\Policies\WithdrawPolicy'
     ];
 
     /**

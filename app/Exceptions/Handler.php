@@ -73,7 +73,7 @@ class Handler extends ExceptionHandler
             DB::rollBack();
         }
         if ($exception instanceof Error) {
-            return Response::json([
+            return \Response::json([
                 'success' => false,
                 'msg' => $exception->getMessage(),
                 'code' => $exception->getCode()

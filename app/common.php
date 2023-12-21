@@ -4,15 +4,16 @@ use Carbon\Carbon;
 function cache1($tags, $key, $callback, $expires = null)
 {
     // \Log::debug(__FUNCTION__);
-    $v = Cache::store('redis')->tags($tags)->get($key);
-    if ($v !== null) {
-        // \Log::debug(" ------- cache $key");
-        return json_decode($v, 1);
+    $cache = Cache::store('redis')->tags($tags);
+    if ($cache->has($key)){
+        // \Log::debug(" +++++++ from   cache $key");
+        return $cache->get($key);
+    }else{
+        $value = call_user_func($callback);
+        // \Log::debug(" +++++++ refresh cache $key $value");
+        $cache->put($key, json_encode($value), $expires ?? 3600 * 24);
+        return $value;
     }
-    $value = call_user_func($callback);
-    // \Log::debug(" +++++++ data $key ");
-    Cache::store('redis')->tags($tags)->put($key, json_encode($value), $expires ?? 3600 * 24);
-    return $value;
 }
 
 function tag_user($user) {

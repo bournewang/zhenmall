@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         \App\Models\Cart::observe(\App\Observers\CartObserver::class);
-        \App\Models\SalesOrder::observe(\App\Observers\SalesOrderObserver::class);
+        // \App\Models\SalesOrder::observe(\App\Observers\SalesOrderObserver::class);
         \Nova::style('custom-css', public_path('css/store.css'));
-        
+
         // \DB::connection()->enableQueryLog();
         // \DB::listen(function($query) {
         //     \Log::info(

@@ -16,9 +16,9 @@ class CreateGoodsTable extends Migration
         Schema::create('goods', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('supplier_id')->unsigned()->nullable();
+            // $table->bigInteger('supplier_id')->unsigned()->nullable();
             $table->string('name');
-            $table->string('qty')->nullable(); 
+            $table->string('qty')->nullable();
             // $table->string('type')->nullable();
             $table->string('brand')->nullable();
             $table->decimal('price_ori', 8, 2)->nullable();
@@ -29,7 +29,7 @@ class CreateGoodsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            // $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 

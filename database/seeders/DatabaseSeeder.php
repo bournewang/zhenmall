@@ -17,23 +17,15 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             CategorySeeder::class,
             GoodsSeeder::class,
-            SupplierSeeder::class,
             StoreSeeder::class,
             BannerSeeder::class,
             UserSeeder::class,
             AreaSeeder::class,
             AddressSeeder::class,
             CartSeeder::class,
-            DeviceSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
             LogisticSeeder::class,
-            ServiceOrderSeeder::class,
-            SalesOrderSeeder::class,
-            BillSeeder::class,
-            MembershipCardSeeder::class,
-            DeviceRentalSeeder::class,
-            HealthSeeder::class
         ]);
     }
 }

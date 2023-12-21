@@ -31,7 +31,7 @@ class AreaSeeder extends Seeder
             // if province, skip
             if (substr($code, 2) == '0000') {
 
-                // echo "create province: ## $name \n";
+                echo "create province: ## $name \n";
                 Province::create(['code' => $code, 'name' => $name]);
 
                 // if ($i++ > 2)break;
@@ -50,7 +50,7 @@ class AreaSeeder extends Seeder
                     'lng' => isset($locations[$name]['lng']) ? $locations[$name]['lng'] : null,
                     'lat' => isset($locations[$name]['lat']) ? $locations[$name]['lat'] : null,
                 ]);
-                echo "create city: #### $name \n";
+                // echo "create city: #### $name \n";
             //  if district
             } else {
                 // $province_code = substr($code, 0, 2) . "0000";
@@ -64,7 +64,7 @@ class AreaSeeder extends Seeder
                     continue;
                 }
                 District::create(['city_id' => $city->id, 'code' => $code, 'name' => $name]);
-                echo "create district: ###### $name \n";
+                #echo "create district: ###### $name \n";
             }
         }
         fclose($fp);

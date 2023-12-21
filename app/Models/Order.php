@@ -61,7 +61,7 @@ class Order extends BaseModel
         'amount' => 'required|numeric|min:0.01'
     ];
 
-    const CREATED = 'created';
+    const CREATED = 'unpaid';
     const PAID = 'paid';
     const SHIPPED = 'shipped';
     const COMPLETE = 'complete';

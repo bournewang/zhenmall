@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('store_id')->unsigned();
+            $table->bigInteger('store_id')->unsigned()->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->string('order_no', 24)->unique();
             $table->decimal('amount', 8,2)->nullable();
@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('city_id')->unsigned()->nullable();
             $table->bigInteger('district_id')->unsigned()->nullable();
             $table->string('street')->nullable();
-            $table->string('contact', 12)->nullable();
+            $table->string('contact', 24)->nullable();
             $table->string('mobile', 16)->nullable()->index();
             $table->bigInteger('logistic_id')->unsigned()->nullable();
             $table->string('waybill_number', 32)->nullable();

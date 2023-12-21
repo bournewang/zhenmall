@@ -21,9 +21,9 @@ class Goods extends BaseModel
     protected $fillable = [
         'id',
         'name',
-        'qty', 
+        'qty',
         'category_id',
-        'supplier_id',
+        // 'supplier_id',
         'type',
         'brand',
         'price',
@@ -35,9 +35,9 @@ class Goods extends BaseModel
     
     protected $casts = [
         'name' => 'string',
-        'qty' => 'string', 
+        'qty' => 'string',
         'category_id' => 'integer',
-        'supplier_id' => 'integer',
+        // 'supplier_id' => 'integer',
         'type' => 'string',
         'brand' => 'string',
         'price' => 'float',
@@ -53,12 +53,7 @@ class Goods extends BaseModel
     {
         return $this->belongsTo(Category::class);
     }
-    
-    public function supplier()
-    {
-        return $this->belongsTo(Supplier::class);
-    }
-    
+
     public function carts()
     {
         return $this->belongsToMany(Cart::class)->withPivot('quantity', 'price', 'subtotal');

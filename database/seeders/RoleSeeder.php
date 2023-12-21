@@ -22,12 +22,7 @@ class RoleSeeder extends Seeder
             echo "create role $role_name\n";
             $role = Role::create(['name' => $role_name]);
         }
-        $role->permissions()->sync(Permission::whereNotIn('name', [
-            __('Create').__('PurchaseOrder'),
-            __('Update').__('PurchaseOrder'),
-            __('Create').__('SalesOrder'),
-            __('Update').__('SalesOrder'),
-        ])->get());
+        $role->permissions()->sync(Permission::all());
         $i=1;
         User::find($i++)->assignRole($role);
         foreach (config('seed.roles') as $role_val => $array) {

@@ -102,8 +102,8 @@ class Store extends Resource
                     return $s;
                 })->onlyOnIndex(),
             ]),
-            HasMany::make(__('Device'), 'devices', Device::class),
-            HasMany::make(__('Service Order'), 'serviceOrders', ServiceOrder::class)
+            // HasMany::make(__('Device'), 'devices', Device::class),
+            // HasMany::make(__('Service Order'), 'serviceOrders', ServiceOrder::class)
         ];
     }
 

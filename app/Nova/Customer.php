@@ -43,8 +43,8 @@ class Customer extends Resource
         return array_merge($this->userFields($request), [
             HasMany::make(__("Address"), 'addresses', Address::class),
             HasMany::make(__('Online Order'), 'orders', Order::class),
-            HasMany::make(__('Service Order'), 'serviceOrders', ServiceOrder::class),
-            HasMany::make(__('Sales Order'), 'salesOrders', SalesOrder::class),
+            // HasMany::make(__('Service Order'), 'serviceOrders', ServiceOrder::class),
+            // HasMany::make(__('Sales Order'), 'salesOrders', SalesOrder::class),
         ]);
     }
 

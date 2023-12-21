@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->bigInteger('store_id')->unsigned()->nullable();
             $table->bigInteger('referer_id')->unsigned()->nullable();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('openid', 64)->nullable()->unique();
             $table->string('unionid', 64)->nullable()->unique();
             $table->string('nickname', 32)->nullable();
@@ -30,15 +30,17 @@ class CreateUsersTable extends Migration
             $table->string('county', 32)->nullable();
             $table->string('qrcode', 64)->nullable();
             $table->string('id_no', 24)->nullable();
+            $table->decimal('balance', 10, 2)->nullable();
+            $table->decimal('quota', 10, 2)->nullable();
 
             $table->string('wechat', 24)->nullable();
             $table->string('bank_key', 24)->nullable();
             $table->string('bank_name', 32)->nullable();
             $table->string('account_no', 32)->nullable();
 
-            $table->enum('type', array_keys(User::typeOptions()));
-            $table->enum('status', array_keys(User::statusOptions()));
-            $table->string('email')->unique();
+            $table->enum('type', array_keys(User::typeOptions()))->nullable();
+            $table->enum('status', array_keys(User::statusOptions()))->nullable();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api_token', 80)->nullable();

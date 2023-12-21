@@ -56,7 +56,7 @@ class Goods extends Resource
         return [
             ID::make()->sortable(),
             BelongsTo::make(__('Category'), 'category', Category::class)->sortable()->rules('required'),
-            BelongsTo::make(__('Supplier'), 'supplier', Supplier::class)->sortable(),
+            // BelongsTo::make(__('Supplier'), 'supplier', Supplier::class)->sortable(),
             Text::make(__('Name'), 'name')->sortable()->rules('required', 'max:255')
                     ->creationRules("unique:goods,name,NULL,id")
                     ->updateRules("unique:goods,name,{{resourceId}},id")
@@ -84,7 +84,7 @@ class Goods extends Resource
     {
         return [
             new Filters\CategoryFilter,
-            new Filters\SupplierFilter
+            // new Filters\SupplierFilter
         ];
     }
 

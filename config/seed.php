@@ -1,6 +1,5 @@
 <?php
 use App\Models\User;
-use App\Models\Health;
 return [
     'banner' => [
         // ['title' => 'iphone12美版64G', 'goods_id' => 2, 'image' => 'iphone.jpeg', 'store_id' => 1],
@@ -13,34 +12,30 @@ return [
     // resource to build permissions of View/Create/Update/Delete/ForceDelete
     // new resource must put here
     'resources' => [
-	    'DeviceRental',
-	    'MembershipCard', 'MembershipUsedItem',
-	    'Bill', 'BillItem',
-        "Address","Banner","Cart","Category","City","Clerk",
-        "Customer","Device","District","Expert","Goods","Logistic","Order",
+	    // 'DeviceRental',
+	    // 'MembershipCard', 'MembershipUsedItem',
+	    // 'Bill', 'BillItem',
+        "Address","Banner","Cart","Category","City",
+        "Customer","District","Goods","Logistic","Order",
         "Province","Revenue","Salesman","Setting","Store","Supplier","User",
-        "Review", "PurchaseOrder","SalesOrder","Stock", "StockItem", 'Health',
+        "Review",
+        // "PurchaseOrder","SalesOrder","Stock", "StockItem", 'Health',
     ],
     // special permissions
     'permissions' => [
-        'Deliver', 'StockImport',
-        'AddPurchaseOrder',  'EditPurchaseOrder',
-        'AddSalesOrder',     'EditSalesOrder',
+        // 'Deliver', 'StockImport',
+        // 'AddPurchaseOrder',  'EditPurchaseOrder',
+        // 'AddSalesOrder',     'EditSalesOrder',
     ],
     'roles' => [
-        User::SALESMAN => [
-            "View Store",
-            "View Device",
-            "View Order",
-        ],
         User::MANAGER => [
             "View Customer",
             "View Clerk",
             "View Order",
             "View ServiceOrder",
             "View Review",
-            "View Category",
-            "View Goods",
+            "View Category", "Create Category", "Edit Category", "Delete Category",
+            "View Goods",   "Create Goods", "Edit Goods", "Delete Goods",
             'View PurchaseOrder',   'AddPurchaseOrder',  'EditPurchaseOrder',  'Delete PurchaseOrder', 'StockImport',
             'View SalesOrder',      'AddSalesOrder',     'EditSalesOrder',     'Delete SalesOrder',
             "View MembershipCard",  "Create MembershipCard", "Update MembershipCard", "Delete MembershipCard",
@@ -50,54 +45,6 @@ return [
             "View BillItem",
             'View Stock',
             'View StockItem',
-//            "View Cart"
-        ],
-        User::VICE_MANAGER => [
-            "View Customer",
-            "View Clerk",
-            "View User",
-            "View Order",
-            "View ServiceOrder",
-            "View Review",
-            "View Category",
-            "View Goods",
-            'View PurchaseOrder',
-            'View SalesOrder',
-            "View MembershipCard",
-            "View DeviceRental",
-            "View MembershipUsedItem",
-            "View Bill",
-            "View BillItem",
-            'View Stock',
-            'View StockItem',
-        ],
-        User::CLERK => [
-            "View Customer",
-            "View User",
-            "View Order",
-            "View Category",
-            "View Goods",
-            'View PurchaseOrder',   'AddPurchaseOrder',  'EditPurchaseOrder',  'StockImport',
-            'View SalesOrder',      'AddSalesOrder',     'EditSalesOrder',
-            "View MembershipCard",  "Create MembershipCard", "Update MembershipCard", "Delete MembershipCard",
-            "View DeviceRental",    "Create DeviceRental",  "Update DeviceRental", "Delete DeviceRental",
-            "View MembershipUsedItem",
-            "View Bill",
-            "View BillItem",
-            'View Stock',
-            'View StockItem',
-        ],
-        User::STORE_KEEPER => [
-            "View Goods",
-            "View Order",
-            'Deliver',
-        ],
-        User::FINANCE => [
-            "View Goods",
-            "View Order",
-            'View ServiceOrder',
-//            'View PurchaseOrder',
-//            'View SalesOrder',
         ],
     ],
     'setting' => [
@@ -121,23 +68,18 @@ return [
             "EIBC" 	=> "中国进出口银行",
             "ADBC" 	=> "中国农业发展银行",
             "OTHER" => "其他"
-        ],
-        'device_types' => [
-            'ggz1JU0WNFH' => '强筋机器人',
-            'ggz17zg9nAJ' => '石墨烯能量房',
-            'ggz1Vk6qGPr' => '超长波治疗仪'
         ]
     ],
     'category' => [
-        ['pid' => null, 'id' => 1, 'name' => '营养', 'status' => 'on_shelf'],
-        ['pid' => null, 'id' => 2, 'name' => '保健', 'status' => 'on_shelf'],
+        ['pid' => null, 'id' => 10000, 'name' => '营养', 'status' => 'on_shelf'],
+        ['pid' => null, 'id' => 10001, 'name' => '保健', 'status' => 'on_shelf'],
     ],
     'goods' => [
-        ['id' => 1, 'category_id' => 1, 'name' => '澳洲进口牛奶', 'price' => 68, 'status' => 'on_shelf'],
-        ['id' => 2, 'category_id' => 2, 'name' => '拉力器', 'price' => 88, 'status' => 'on_shelf'],
+        ['id' => 1, 'category_id' => 10000, 'name' => '澳洲进口牛奶', 'price' => 68, 'status' => 'on_shelf'],
+        ['id' => 2, 'category_id' => 10001, 'name' => '拉力器', 'price' => 88, 'status' => 'on_shelf'],
     ],
     'user' => [
-        ['id' => 1, 'name' => 'Admin', 'email' =>'admin@test.com',    'mobile' =>  '13811111110', 'password' => '111111', 'openid' => '111110', 'unionid' => '111110'],
+        ['id' => 1, 'name' => 'System Admin', 'nickname' => 'System Admin', 'email' =>'admin@test.com',    'mobile' =>  '13811111110', 'password' => '111111', 'openid' => '111110', 'unionid' => '111110'],
         ['id' => 2, 'name' => '王业务员', 'nickname' => '王业务员','email' => 'sales@test.com',   'mobile' => '13811111111',  'password' => '111111', 'referer_id' => null, 'openid' => '111111', 'unionid' => '111111', 'type' => User::SALESMAN],
         ['id' => 3, 'name' => '张店长', 'nickname' => '张店长','email' => 'zhang@test.com',       'mobile' => '13811111112',  'password' => '111111', 'store_id' => 1, 'referer_id' => null, 'openid' => '111112', 'unionid' => '111112', 'type' => User::MANAGER, 'api_token' => '111111'],
         ['id' => 4, 'name' => '小刘/店员', 'nickname' => '小刘','email' => 'liu@test.com',        'mobile' => '13811111113',    'password' => '111111', 'store_id' => 1, 'referer_id' => null,    'openid' => '111113', 'unionid' => '111113', 'type' => User::CLERK],
@@ -146,12 +88,6 @@ return [
         ['id' => 7, 'name' => '李晓丽',  'nickname' => '财务李', 'email' => 'xiaoli@test.com',   'mobile' => '13811111116',  'password' => '111111', 'openid' => '111117', 'unionid' => '111117', 'type' => User::FINANCE],
         ['id' => 8, 'name' => '刘琳琳',  'nickname' => '仓管', 'email' => 'liulin@test.com',   'mobile' => '13811111117',  'password' => '111111', 'openid' => '111118', 'unionid' => '111118', 'type' => User::STORE_KEEPER],
         ['id' => 9, 'name' => '唐小名',  'nickname' => '副店长', 'email' => 'tang@test.com',   'mobile' => '13811111118',  'password' => '111111', 'openid' => '111119', 'unionid' => '111119', 'type' => User::VICE_MANAGER],
-    ],
-    'health' => [
-        ['store_id' => 1, 'user_id' => 2,'expert_id' => 6, 'status' => Health::PENDING, 'suggestion' => '多喝开水'],
-        ['store_id' => 1, 'user_id' => 3,'expert_id' => 6, 'status' => Health::REPLIED, 'suggestion' => '气虚，多吃如肉蛋奶，适当锻炼身体'],
-        ['store_id' => 1, 'user_id' => 4,'expert_id' => 6, 'status' => Health::REPLIED, 'suggestion' => '早睡早起，补充维生素、钙片'],
-        ['store_id' => 1, 'user_id' => 5,'expert_id' => 6, 'status' => Health::DENIED, 'suggestion' => '适当锻炼，补充纤维素'],
     ],
     'address' => [
         [

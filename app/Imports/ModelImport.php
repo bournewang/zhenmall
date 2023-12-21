@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 use App\Models\Goods;
 use App\Models\Category;
-use App\Models\Supplier;
+// use App\Models\Supplier;
 use App\Helpers\ValidatorHelper;
 
 class ModelImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure
@@ -40,11 +40,12 @@ class ModelImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
     {
         return [
             'name'  => $row[0],
-            'qty'   => $row[1], 
-            'supplier_id'   => $this->parse($row[2], 'Supplier')
+            'qty'   => $row[1],
+            // 'supplier_id'   => $this->parse($row[2], 'Supplier')
         ];
     }
     
+
     public function prepareForValidation(array $row)
     {
         \Log::debug(__CLASS__.'->'.__FUNCTION__);

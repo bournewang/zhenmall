@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\User;
 use App\Models\Order;
+use App\Helpers\RedPacketHelper;
 use Log;
 
 class WechatController extends ApiBaseController
@@ -155,6 +156,7 @@ class WechatController extends ApiBaseController
                 if ($order = Order::where('order_no', $order_no)->first()) {
                     $order->update(['status' => Order::PAID, 'paid_at' => Carbon::now()]);
                     // FIXME:
+                    RedPacketHelper::sendRedPackets($order);
                     return true;
                 }
             }

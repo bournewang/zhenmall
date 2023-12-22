@@ -91,10 +91,13 @@ class WechatController extends ApiBaseController
         \Log::debug("decrypt data: ");
         \Log::debug($data);
 
-        if ($sess = \Cache::get("wx.session.".$session_key)) {
-            $session = json_decode($sess, 1);
-            $openid = $session['openid'] ?? null;
-            $unionid = $session['unionid'] ?? null;
+        // if ($sess = \Cache::get("wx.session.".$session_key)) {
+            // $session = json_decode($sess, 1);
+        if (!$openid = ($data['openId'] ?? null)) {
+            return $this->sendError("no openId in decrypt data");
+        }
+
+            $unionid = $data['unionid'] ?? null;
             $store_id = intval($request->input('store_id', null));
             $store_id = $store_id > 0 ? $store_id : null;
             if (!$user = User::where('openid', $openid)->first()) {
@@ -117,8 +120,8 @@ class WechatController extends ApiBaseController
                 \Log::debug("user: $user->id");
                 return $this->sendResponse($user->info());
             }
-        }
-        return $this->sendError("no openId in decrypt data");
+        // }
+        // return $this->sendError("no openId in decrypt data");
     }
 
     public function notify(Request $request)
@@ -151,6 +154,7 @@ class WechatController extends ApiBaseController
                 ($order_no = $data['out_trade_no'])) {
                 if ($order = Order::where('order_no', $order_no)->first()) {
                     $order->update(['status' => Order::PAID, 'paid_at' => Carbon::now()]);
+                    // FIXME:
                     return true;
                 }
             }

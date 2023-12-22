@@ -44,6 +44,7 @@ class GoodsImagesImport
     
     protected function importGoodsImage($model, $dir)
     {
+        echo "import images for ".$model->name."\n";
         $str = [];
         $this->logData(pathinfo($dir, PATHINFO_FILENAME));
         foreach ($this->sortFiles($dir) as $collect) {
@@ -61,6 +62,7 @@ class GoodsImagesImport
             
             // walk through all images and add to media library
             foreach ($this->sortFiles($collect) as $image) {
+                echo "\timport image ".basename($image)."\n";
                 $ext = pathinfo($image, PATHINFO_EXTENSION);
                 $img_name = pathinfo($image, PATHINFO_FILENAME);
                 if (in_array(strtolower($ext), self::acccept_image_format)) {

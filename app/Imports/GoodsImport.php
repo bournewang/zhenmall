@@ -15,6 +15,7 @@ class GoodsImport extends ModelImport
 
     protected function prepareData(array $row)
     {
+        echo "  import ".$row['名称']."\n";
         $status = array_flip((new Goods)->statusOptions());
         return [
             'name'          => $row['名称'],

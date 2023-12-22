@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
@@ -29,6 +30,10 @@ trait UserTrait{
             Text::make(__('City'), 'city'),
             Text::make(__('Gender'), 'gender'),
             Text::make(__('Mobile'), 'mobile'),
+            $this->moneyfield(__('Balance'), 'balance'),
+            $this->moneyfield(__('Withdraw Quota'), 'quota'),
+            Date::make(__("Rewards Expires"), "rewards_expires_at"),
+            BelongsTo::make(__('Referer'), 'referer', User::class),
             Select::make(__("Status"), 'status')->options(function(){return \App\Models\User::statusOptions();})->displayUsingLabels(),
 
             Password::make('Password')

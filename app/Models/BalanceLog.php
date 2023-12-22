@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BalanceLog extends Model
+class BalanceLog extends BaseModel
 {
-    use HasFactory;
+    use SoftDeletes;
+
     public $table = 'balance_log';
 
     protected $dates = ['deleted_at'];
@@ -19,7 +20,8 @@ class BalanceLog extends Model
         'type',
         'amount',
         'balance',
-        'comment'
+        'comment',
+        'open'
     ];
 
     protected $casts = [
@@ -28,7 +30,8 @@ class BalanceLog extends Model
         'type' => 'string',
         'amount' => 'float',
         'balance' => 'float',
-        'comment' => 'string'
+        'comment' => 'string',
+        'open' => 'boolean'
     ];
 
     protected $hidden = [
@@ -45,5 +48,15 @@ class BalanceLog extends Model
             self::CONSUME => __(ucfirst(self::CONSUME)),
             self::EDIT => __(ucfirst(self::EDIT))
         ];
+    }
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

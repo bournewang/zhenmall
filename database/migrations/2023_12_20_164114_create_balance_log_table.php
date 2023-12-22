@@ -21,7 +21,9 @@ class CreateBalanceLogTable extends Migration
             $table->decimal('amount', 10,2);
             $table->decimal('balance', 10,2);
             $table->string('comment');
+            $table->boolean('open')->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('store_id')->references('id')->on('stores');
             $table->foreign('user_id')->references('id')->on('users');

@@ -25,6 +25,8 @@ use App\Http\Controllers\API\ServiceController;
 use App\Http\Controllers\API\StockController;
 use App\Http\Controllers\API\HealthController;
 use App\Http\Controllers\API\BillingController;
+use App\Http\Controllers\API\BalanceLogController;
+use App\Http\Controllers\API\QuotaLogController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -108,13 +110,15 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::get      ('/stores',         [StoreController::class, 'index']);
     Route::get      ('/stores/{id}',    [StoreController::class, 'show']);
 
-    Route::get      ('/customers',      [CustomerController::class, 'index']);
-    Route::get      ('/clerks',         [ClerkController::class, 'index']);
+    Route::get      ('/balance-logs',   [BalanceLogController::class, 'index']);
+    Route::get      ('/quota-logs',     [QuotaLogController::class, 'index']);
+    // Route::get      ('/customers',      [CustomerController::class, 'index']);
+    // Route::get      ('/clerks',         [ClerkController::class, 'index']);
 
-    Route::get('/sales',                [SalesController::class, 'index']);
-    Route::get('/sales/{user_id}',      [SalesController::class, 'show']);
-    Route::get('/services',             [ServiceController::class, 'index']);
-    Route::get('/services/{user_id}',   [ServiceController::class, 'show']);
+    // Route::get('/sales',                [SalesController::class, 'index']);
+    // Route::get('/sales/{user_id}',      [SalesController::class, 'show']);
+    // Route::get('/services',             [ServiceController::class, 'index']);
+    // Route::get('/services/{user_id}',   [ServiceController::class, 'show']);
 
-    Route::get('/stocks',               [StockController::class, 'index']);
+    // Route::get('/stocks',               [StockController::class, 'index']);
 });

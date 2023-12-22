@@ -21,6 +21,7 @@ class CreateWithdrawTable extends Migration
             $table->enum('status', array_keys(\App\Models\Withdraw::statusOptions()))->nullable();
             $table->string('account')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('store_id')->references('id')->on('stores');
             $table->foreign('user_id')->references('id')->on('users');

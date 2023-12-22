@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('id_no', 24)->nullable();
             $table->decimal('balance', 10, 2)->nullable();
             $table->decimal('quota', 10, 2)->nullable();
+            $table->date('rewards_expires_at')->nullable();
 
             $table->string('wechat', 24)->nullable();
             $table->string('bank_key', 24)->nullable();

@@ -14,7 +14,7 @@ use App\Exceptions\ApiException;
 /**
  * @OA\Info(
  *      version="0.6.0",
- *      title="华研API文档",
+ *      title="御臻商城API文档",
  *      description="",
  *      @OA\Contact(
  *          email="xiaopei0206@icloud.com"

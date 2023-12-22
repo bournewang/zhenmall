@@ -34,12 +34,15 @@ class User extends Authenticatable implements HasMedia
         'qrcode',
         'id_no',
         'id_status',
+        'balance',
+        'quota',
         // 'superiors',
         'referer_id',
         'type',
         'email',
         'password',
         'status',
+        'rewards_expires_at',
         // 'level',
         // 'dd',
         // 'dds',  // number of dd
@@ -66,6 +69,7 @@ class User extends Authenticatable implements HasMedia
         'name' => 'required|string',
         'gender' => 'integer',
         'mobile' => 'required',
+        'rewards_expires_at' => 'date',
         'status' => 'string'
     ];
 
@@ -86,6 +90,7 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
         'level' => 'integer',
+        'rewards_expires_at' => 'date',
         // 'sharing' => 'integer',
         'referer_id' => 'integer',
     ];
@@ -221,6 +226,16 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Health::class);
     }
 
+    public function balanceLogs()
+    {
+        return $this->hasMany(BalanceLog::class);
+    }
+
+    public function quotaLogs()
+    {
+        return $this->hasMany(QuotaLog::class);
+    }
+
     public function isRoot()
     {
         return $this->id == 1;
@@ -255,6 +270,8 @@ class User extends Authenticatable implements HasMedia
             'province',
             'city',
             'county',
+            'balance',
+            'quota',
             'api_token'
         ];
         foreach ($attrs as $attr){

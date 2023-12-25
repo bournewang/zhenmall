@@ -27,6 +27,7 @@ use App\Http\Controllers\API\HealthController;
 use App\Http\Controllers\API\BillingController;
 use App\Http\Controllers\API\BalanceLogController;
 use App\Http\Controllers\API\QuotaLogController;
+use App\Http\Controllers\API\RedPacketController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -112,6 +113,9 @@ Route::group(['middleware' => ['auth:api']], function(){
 
     Route::get      ('/balance-logs',   [BalanceLogController::class, 'index']);
     Route::get      ('/quota-logs',     [QuotaLogController::class, 'index']);
+
+    Route::get      ('/red-packets',    [RedPacketController::class, 'index']);
+    Route::put      ('/red-packets/{id}',   [RedPacketController::class, 'open']);
     // Route::get      ('/customers',      [CustomerController::class, 'index']);
     // Route::get      ('/clerks',         [ClerkController::class, 'index']);
 

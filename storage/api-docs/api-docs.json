@@ -1,0 +1,1912 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "御臻商城API文档",
+        "description": "",
+        "contact": {
+            "email": "xiaopei0206@icloud.com"
+        },
+        "version": "0.6.0"
+    },
+    "servers": [
+        {
+            "url": "http://zhenmall.local",
+            "description": ""
+        }
+    ],
+    "paths": {
+        "/api/address": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Get address list",
+                "operationId": "a8f8f77c5b2ae05abc217ea482ca892a",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Create address",
+                "operationId": "6339a8141df7006aeb2530f0454a0785",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "province_id": {
+                                        "type": "integer"
+                                    },
+                                    "city_id": {
+                                        "type": "integer"
+                                    },
+                                    "district_id": {
+                                        "type": "integer"
+                                    },
+                                    "street": {
+                                        "type": "string"
+                                    },
+                                    "default": {
+                                        "type": "integer"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "contact": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/address/{id}": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Address detail api",
+                "operationId": "b5b9c4fa22020e718c69cc0f635522c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "address id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Update address",
+                "operationId": "7a8fd98169bed167c8dc411c0d79a3d8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "address id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "province_id": {
+                                        "type": "integer"
+                                    },
+                                    "city_id": {
+                                        "type": "integer"
+                                    },
+                                    "district_id": {
+                                        "type": "integer"
+                                    },
+                                    "street": {
+                                        "type": "string"
+                                    },
+                                    "default": {
+                                        "type": "integer"
+                                    },
+                                    "mobile": {
+                                        "type": "string"
+                                    },
+                                    "contact": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Delete address api",
+                "operationId": "3cd74b898997122a9455fcb39f9d8ba1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "address id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/address/default": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "get default address api",
+                "operationId": "25f4542c1706ac47a4e466cfd54e51b4",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/balance-logs": {
+            "get": {
+                "tags": [
+                    "BalanceLog"
+                ],
+                "summary": "BalanceLog list api",
+                "operationId": "685d826f2323b8681948cf015f7d9685",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/banners": {
+            "get": {
+                "tags": [
+                    "Banner"
+                ],
+                "summary": "Banner list api",
+                "operationId": "8ffb68e5774b1fdbefaf980738d0581f",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/billing": {
+            "get": {
+                "tags": [
+                    "Billing"
+                ],
+                "summary": "Billing list api",
+                "operationId": "9c5a48d78da6d39d11704acad3f51b74",
+                "parameters": [
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "year,example: 2022",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "month, 1-12",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/billing/items": {
+            "get": {
+                "tags": [
+                    "Billing"
+                ],
+                "summary": "Billing items api",
+                "operationId": "4f5709ab2b99ac11d83660402636585c",
+                "parameters": [
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "year,example: 2022",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "month, 1-12",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "period",
+                        "in": "query",
+                        "description": "period, 1-3",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/cart": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Get cart info api",
+                "operationId": "01bdc7c24cb6882be563778d4c95bfad",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/cart/{goods_id}": {
+            "put": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Update cart item api",
+                "operationId": "cc7e4a8c98ea66f8e63ac56ce230c8c0",
+                "parameters": [
+                    {
+                        "name": "goods_id",
+                        "in": "path",
+                        "description": "goods id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "quantity": {
+                                        "description": "quantity",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Add to cart api",
+                "operationId": "533c44d4beb5c7dbe9a57cfd208d2d79",
+                "parameters": [
+                    {
+                        "name": "goods_id",
+                        "in": "path",
+                        "description": "goods id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "quantity": {
+                                        "description": "quantity",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Delete cart item api",
+                "operationId": "b6823d2955b486bafade8b3a0ab25211",
+                "parameters": [
+                    {
+                        "name": "goods_id",
+                        "in": "path",
+                        "description": "goods id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Category and Goods"
+                ],
+                "summary": "Category list api",
+                "operationId": "8e17a9627dbed245cf032f867569cf11",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/clerks": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "Clerk list api 店员列表,查询店长所在店铺的店员",
+                "operationId": "b0bb3b51e4caa9693dfa0b3583539e0f",
+                "parameters": [
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "k",
+                        "in": "query",
+                        "description": "keywords of name/mobile",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/customers": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "Customer list api 获取门店下的顾客，店长查看该店所有顾客，店员可查看自己开发的顾客",
+                "operationId": "391d8aab1cfed2de68caed90bfee32d7",
+                "parameters": [
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "k",
+                        "in": "query",
+                        "description": "keywords of name/mobile",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/file": {
+            "post": {
+                "tags": [
+                    "文件上传"
+                ],
+                "summary": "上传文件/图片",
+                "operationId": "97a2c1e3dd2c78ed953148626f8e82a4",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "img": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/goods": {
+            "get": {
+                "tags": [
+                    "Category and Goods"
+                ],
+                "summary": "Goods list api",
+                "operationId": "789d8bad53a6e51755d0e465f4e2093f",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "category id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "k",
+                        "in": "query",
+                        "description": "key words",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "recommend",
+                        "in": "query",
+                        "description": "recommend",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/goods/{id}": {
+            "get": {
+                "tags": [
+                    "Category and Goods"
+                ],
+                "summary": "Goods detail api",
+                "operationId": "5bdadb57f8aaed75dba82928238b1d7d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "goods id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/goods/{id}/like": {
+            "post": {
+                "tags": [
+                    "Category and Goods"
+                ],
+                "summary": "Goods like api",
+                "operationId": "9caf72c55e7a93861f0fd6900f3e211f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "goods id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Category and Goods"
+                ],
+                "summary": "Goods dislike api",
+                "operationId": "28b67cd2edc71080bf64c276d5f3619f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "goods id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/health": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Health list api 健康咨询记录",
+                "operationId": "4eff7dbafa59aa8cf20d5b1fcd1315c3",
+                "parameters": [
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create a health 提交一个健康咨询",
+                "operationId": "554d099efd95872be68b48d13cfb894e",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "detail": {
+                                        "description": "健康状况描述及问题",
+                                        "type": "string"
+                                    },
+                                    "imgs[]": {
+                                        "description": "img urls, 病例及症状",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "collectionFormat": "multi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/health/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Health detail api 健康咨询记录详情",
+                "operationId": "b394586fa4f44cc54bf35b1d2a09a1ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "health record id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get order list 获取订单列表",
+                "operationId": "803fc5d32177a888e12dd7a8f9d0e6d4",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "order status",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "order number per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page no",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Place an order 提交订单",
+                "operationId": "7ec1819ee794b4683c5021237cf930bd",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "address_id": {
+                                        "description": "Address id",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/summary": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get order status summary 获取各状态订单数量",
+                "operationId": "0433f18c2b1498c7e3cab1c748c05b7f",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get order detail 获取订单详情",
+                "operationId": "323fecf06eebc01290343e81c470453f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "order id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/{id}/place": {
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "submit to wechat payment order 创建微信支付订单",
+                "operationId": "047ae91cf12f83f010acb7d6fd3a44bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "order id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/{id}/receive": {
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "receive order 确认收货",
+                "operationId": "7f4ebc3b53261187269cdee285f5cfc4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "order id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/{id}/review": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "review order 评价",
+                "operationId": "d343f399e3e8eba8438b90c2f243d201",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "order id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "rating": {
+                                        "description": "1-5",
+                                        "type": "integer"
+                                    },
+                                    "comment": {
+                                        "description": "comment",
+                                        "type": "string"
+                                    },
+                                    "imgs[]": {
+                                        "description": "img urls",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "collectionFormat": "multi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/quota-logs": {
+            "get": {
+                "tags": [
+                    "BalanceLog"
+                ],
+                "summary": "Quotalog list api",
+                "operationId": "c1d47ffb7cafcaa41edb23a7a3be3776",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/red-packets": {
+            "get": {
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "Get red packets 获取红包列表",
+                "operationId": "759d5c946b49df06b8903e369369b77a",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/red-packets/{id}": {
+            "put": {
+                "tags": [
+                    "RedPacket"
+                ],
+                "summary": "Open red packets 开红包",
+                "operationId": "7d1d0e95e75649c8394c1858be7bfd51",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/provinces": {
+            "get": {
+                "tags": [
+                    "Region"
+                ],
+                "summary": "Provinces list api",
+                "operationId": "5a887442f7609496c60c4af8b6c8c05f",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/provinces/{province_id}/cities": {
+            "get": {
+                "tags": [
+                    "Region"
+                ],
+                "summary": "Cities list api",
+                "operationId": "e79ef2e8913ab56eebf52236f3e07a06",
+                "parameters": [
+                    {
+                        "name": "province_id",
+                        "in": "path",
+                        "description": "province_id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/cities/{city_id}/districts": {
+            "get": {
+                "tags": [
+                    "Region"
+                ],
+                "summary": "Districts list api",
+                "operationId": "b3c8ae2de59f9aecd7eeefbea53699e5",
+                "parameters": [
+                    {
+                        "name": "city_id",
+                        "in": "path",
+                        "description": "city_id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/reviews": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Review list api",
+                "operationId": "a15f7d74fd8a01fc0cba02cc1a871267",
+                "parameters": [
+                    {
+                        "name": "goods_id",
+                        "in": "query",
+                        "description": "goods id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/reviews/{id}": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Review detail api",
+                "operationId": "d1917d4a8ea6ffbc18e27639623da26d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "reviews id",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/sales": {
+            "get": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "Orders in a store(for manager/clerk and referer) 门店顾客的消费数据，店长查看本店的数据，店员/推荐人则返回自己推荐顾客的数据",
+                "operationId": "6d53b0773a9bf43735d418b29ccadccb",
+                "parameters": [
+                    {
+                        "name": "prev_month",
+                        "in": "query",
+                        "description": "previous month sales data",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/sales/{user_id}": {
+            "get": {
+                "tags": [
+                    "Sales"
+                ],
+                "summary": "User's orders 店员开发的顾客消费明细",
+                "operationId": "9dce07d8624585f298a04f7e10413dd9",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/services": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Services in a store(for manager/clerk and referer) 服务订单列表",
+                "operationId": "7cb57dfc3dc68b14a0f32724289e41ab",
+                "parameters": [
+                    {
+                        "name": "prev_month",
+                        "in": "query",
+                        "description": "previous month services data",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/stocks": {
+            "get": {
+                "tags": [
+                    "Stock"
+                ],
+                "summary": "Stocks in a store(for manager/clerk and referer) 查看门店的商品库存",
+                "operationId": "3e78ea1d5725121dde375fd70636f856",
+                "parameters": [
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/stores": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "Store list api 获取该业务员开发/创建的门店",
+                "operationId": "44eee75736ebedbfc01e6efb1555ddf4",
+                "parameters": [
+                    {
+                        "name": "perpage",
+                        "in": "query",
+                        "description": "items per page",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "page num",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "k",
+                        "in": "query",
+                        "description": "key words",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "create an store 业务员开发/创建新门店",
+                "operationId": "9d8cc64b7f4d5fbdab3c7c5ab6d596b7",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "store name",
+                                        "type": "string"
+                                    },
+                                    "company_name": {
+                                        "description": "company name",
+                                        "type": "string"
+                                    },
+                                    "license_no": {
+                                        "description": "license_no",
+                                        "type": "string"
+                                    },
+                                    "account_no": {
+                                        "description": "account_no",
+                                        "type": "string"
+                                    },
+                                    "contact": {
+                                        "description": "contact person",
+                                        "type": "string"
+                                    },
+                                    "mobile": {
+                                        "description": "mobile",
+                                        "type": "string"
+                                    },
+                                    "province_id": {
+                                        "description": "province_id",
+                                        "type": "string"
+                                    },
+                                    "city_id": {
+                                        "description": "city_id",
+                                        "type": "string"
+                                    },
+                                    "street": {
+                                        "description": "street",
+                                        "type": "string"
+                                    },
+                                    "contract[]": {
+                                        "description": "contract img urls",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "collectionFormat": "multi"
+                                    },
+                                    "id_card[]": {
+                                        "description": "manager id_card img urls",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "collectionFormat": "multi"
+                                    },
+                                    "photo[]": {
+                                        "description": "photo img urls",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "collectionFormat": "multi"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/stores/{id}": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "Store detail api 获取该门店详情",
+                "operationId": "7c902b05057fc989b85f28b4d633839d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "store id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/user/info": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "获取用户信息",
+                "operationId": "25428bbb58dc82d86c6f00615a7aa169",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/user/type/{type}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "修改用户类型",
+                "operationId": "530de522ed052453d85beb18ed4d54d4",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "description": "user type",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/user/mobile": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "修改手机号",
+                "operationId": "f2582173d1abe797baab996065fdcdd4",
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "description": "login code",
+                                        "type": "string"
+                                    },
+                                    "iv": {
+                                        "description": "iv from wx.login",
+                                        "type": "string"
+                                    },
+                                    "encryptedData": {
+                                        "description": "encryptedData from wx.login",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/user/qrcode": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "获取用户二维码",
+                "operationId": "517647fb62c51582e64a9d4381ba1cdc",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/wxapp/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login api",
+                "operationId": "3f7da50a03a0cad5e3895ad3422757ce",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "description": "code",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/wxapp/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register api",
+                "operationId": "15ddd8927fef2a85acaed35c571f6ea0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "session_key": {
+                                        "description": "session key from login api response",
+                                        "type": "string"
+                                    },
+                                    "iv": {
+                                        "description": "iv from wx.login",
+                                        "type": "string"
+                                    },
+                                    "encryptedData": {
+                                        "description": "encryptedData from wx.login",
+                                        "type": "string"
+                                    },
+                                    "store_id": {
+                                        "description": "store id from init",
+                                        "type": "integer"
+                                    },
+                                    "referer_id": {
+                                        "description": "referer id from init",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}

@@ -16,7 +16,7 @@ class BalanceLogController extends ApiBaseController
      */
     public function index(Request $request)
     {
-        $records = $this->user->balanceLogs();
+        $records = $this->user->balanceLogs()->where('open', true);
         $total = $records->count();
         $perpage = $request->input('perpage', 20);
         $data = [
@@ -33,6 +33,7 @@ class BalanceLogController extends ApiBaseController
                 'id' => $record->id,
                 'amount' => $record->amount,
                 'comment' => $record->comment,
+                'open' => $record->open,
                 'created_at' => $record->created_at->toDateTimeString()
             ];
         }

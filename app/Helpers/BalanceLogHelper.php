@@ -16,7 +16,22 @@ class BalanceLogHelper
             'comment' => $comment,
             'open' => true
         ]);
-        $user->update(['balance' => $log->balance]);
+        // $user->update(['balance' => $log->balance]);
+        return $log;
+    }
+
+    static public function deposit($user, $amount, $comment = null)
+    {
+        $log = BalanceLog::create([
+            'store_id' => $user->store_id,
+            'user_id' => $user->id,
+            'type' => 'deposit',
+            'amount' => $amount,
+            'balance' => $user->balance + $amount,
+            'comment' => $comment,
+            'open' => true
+        ]);
+        // $user->update(['balance' => $log->balance]);
         return $log;
     }
 }

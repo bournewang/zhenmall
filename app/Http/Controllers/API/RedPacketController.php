@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
-use App\Models\BalanceLog;
+use App\Models\RedPacket;
+use App\Helpers\RedPacketHelper;
 
 class RedPacketController extends ApiBaseController
 {
@@ -18,7 +19,7 @@ class RedPacketController extends ApiBaseController
      */
     public function index(Request $request)
     {
-        $data = $this->user->balanceLogs()->where('open', false)->pluck("amount", "id")->toArray();
+        $data = $this->user->redPackets()->where('open', false)->pluck("amount", "id")->toArray();
         return $this->sendResponse($data);
     }
 
@@ -35,13 +36,9 @@ class RedPacketController extends ApiBaseController
      */
     public function open($id, Request $request)
     {
-        $balance_log = BalanceLog::find($id);
-        // check if the request is from the owner
-        if ($balance_log->user_id != $this->user->id) {
-            $this->sendError("invalid request");
-        }
+        $red_packet = RedPacket::find($id);
 
-        $balance_log->update(['open' => true]);
+        RedPacketHelper::open($this->user, $red_packet);
         return $this->sendResponse(null);
     }
 }

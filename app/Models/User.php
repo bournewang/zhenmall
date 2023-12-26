@@ -236,6 +236,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(QuotaLog::class);
     }
 
+    public function redPackets()
+    {
+        return $this->hasMany(RedPacket::class);
+    }
+
     public function isRoot()
     {
         return $this->id == 1;

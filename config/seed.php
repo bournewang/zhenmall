@@ -18,7 +18,7 @@ return [
         "Address","Banner","Cart","Category","City",
         "Customer","District","Goods","Logistic","Order",
         "Province","Revenue","Salesman","Setting","Store","Supplier","User",
-        "Review",
+        "Review", "RedPacket", "BalanceLog", "QuotaLog"
         // "PurchaseOrder","SalesOrder","Stock", "StockItem", 'Health',
     ],
     // special permissions

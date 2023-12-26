@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CartSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
+            RedPacketSeeder::class,
             LogisticSeeder::class,
         ]);
     }

@@ -155,7 +155,6 @@ class WechatController extends ApiBaseController
                 ($order_no = $data['out_trade_no'])) {
                 if ($order = Order::where('order_no', $order_no)->first()) {
                     $order->update(['status' => Order::PAID, 'paid_at' => Carbon::now()]);
-                    // FIXME:
                     RedPacketHelper::sendRedPackets($order);
                     return true;
                 }

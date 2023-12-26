@@ -93,17 +93,15 @@ class OrderController extends ApiBaseController
             if (!$addr = Address::find($request->input('address_id'))){
                 return $this->sendError("没有选择地址");
             }
-            // $use_balance = $request->input('use_balance');
+            $order = $cart->submit($addr);
             if ($use_balance = $request->input('use_balance')) {
                 // check balance
                 if (($this->user->balance * 100) < ($cart->total_price * 100) ){
                     $this->sendError("余额不足: ".money($this->user->balance));
                 }
-            }
-            $order = $cart->submit($addr);
-            if ($use_balance) {
-                BalanceLogHelper::consume($this->user, $cart->total_price, "下单抵扣");
+                BalanceLogHelper::consume($this->user, $order->amount, "下单抵扣");
                 RedPacketHelper::sendRedPackets($order);
+                $order->update(['status' => Order::PAID]);
             }
 
             return $this->sendResponse($order->id, 'create order success');

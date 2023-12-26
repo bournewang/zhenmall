@@ -70,15 +70,7 @@ class RedPacketHelper
                 $amount = rand($config['rewards_range']['min'], $config['rewards_range']['max']);
                 $balance = $referer->balance + $amount;
                 \Log::debug("sent redpacket for $referer->id amount: $amount, balance: $balance");
-                BalanceLog::create([
-                    'store_id' => $order->store_id,
-                    'user_id' => $referer->id,
-                    'type' => 'deposit',
-                    'amount' => $amount,
-                    'balance' => $balance,
-                    'comment' => "下单红包",
-                    'open' => false
-                ]);
+                BalanceLogHelper::deposit($referer, $amount, "下单红包");
                 $referer->update(['balance' => $balance]);
 
                 // send red packet for referer

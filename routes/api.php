@@ -28,6 +28,7 @@ use App\Http\Controllers\API\BillingController;
 use App\Http\Controllers\API\BalanceLogController;
 use App\Http\Controllers\API\QuotaLogController;
 use App\Http\Controllers\API\RedPacketController;
+use App\Http\Controllers\API\WithdrawController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -116,6 +117,8 @@ Route::group(['middleware' => ['auth:api']], function(){
 
     Route::get      ('/red-packets',    [RedPacketController::class, 'index']);
     Route::put      ('/red-packets/{id}',   [RedPacketController::class, 'open']);
+    Route::post     ('/withdraw',       [WithdrawController::class, 'create']);
+    Route::get      ('/withdraw',       [WithdrawController::class, 'index']);
     // Route::get      ('/customers',      [CustomerController::class, 'index']);
     // Route::get      ('/clerks',         [ClerkController::class, 'index']);
 

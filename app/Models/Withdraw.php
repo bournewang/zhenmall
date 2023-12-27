@@ -58,10 +58,10 @@ class Withdraw extends BaseModel
 
     public function info()
     {
-        return [
-            'amount' => money($this->amount),
-            'status_label' => $this->statusLabel()
-        ];
+        $info = parent::info();
+        // $info['amount'] = money($this->amount);
+        $info['status_label'] = $this->statusLabel();
+        return $info;
     }
 
 }

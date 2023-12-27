@@ -42,12 +42,36 @@ class ApiBaseController extends AppBaseController
         }
         return $data;
     }
-    
+
     public function checkStorePermit()
     {
-        if (!in_array($this->user->type, [User::MANAGER, User::CLERK]) || 
+        if (!in_array($this->user->type, [User::MANAGER, User::CLERK]) ||
             $this->user->status != User::GRANT) {
             throw new ApiException("没有通过申请，暂不能查看该数据！");
         }
+    }
+
+    protected function buildList($request, $collection, $fields)
+    {
+        $records = $collection->orderBy('id', 'desc');
+        $total = $records->count();
+        $perpage = $request->input('perpage', 20);
+        $data = [
+            'titles' => $fields,
+            'total' => $total,
+            'pages' => ceil($total/$perpage),
+            'page' => $request->input('page', 1),
+            'items' => []
+        ];
+        $records = $records->paginate($perpage);
+        foreach ($records as $record) {
+            $info = $record->info();
+            $item = [];
+            foreach ($fields as $key => $label) {
+                $item[$key] = $info[$key];
+            }
+            $data['items'][] = $item;
+        }
+        return $data;
     }
 }

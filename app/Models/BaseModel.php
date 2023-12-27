@@ -18,6 +18,9 @@ class BaseModel extends Model implements HasMedia
         } else {
             $info = $this->getOriginal();
         }
+        if (isset($info['amount'])){
+            $info['amount_label'] = money($info['amount']);
+        }
         foreach (['created_at', 'updated_at', 'deleted_at'] as $key) {
             $info[$key] = $this->$key ? $this->$key->toDateTimeString() : null;
         }

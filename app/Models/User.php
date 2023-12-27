@@ -241,6 +241,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(RedPacket::class);
     }
 
+    public function withdraws()
+    {
+        return $this->hasMany(Withdraw::class);
+    }
+
     public function isRoot()
     {
         return $this->id == 1;

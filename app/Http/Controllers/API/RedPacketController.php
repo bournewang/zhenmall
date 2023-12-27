@@ -36,9 +36,14 @@ class RedPacketController extends ApiBaseController
      */
     public function open($id, Request $request)
     {
-        $red_packet = RedPacket::find($id);
+        if (!$red_packet = RedPacket::find($id)) {
+            return $this->sendError("The red packet is not exist!");
+        }
+        if ($red_packet->open) {
+            return $this->sendError("The red packet is already open!");
+        }
 
         RedPacketHelper::open($this->user, $red_packet);
-        return $this->sendResponse(null);
+        return $this->sendResponse(['balance' => $this->user->balance]);
     }
 }

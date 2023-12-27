@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        \App\Models\Cart::observe(\App\Observers\CartObserver::class);
+        // \App\Models\Cart::observe(\App\Observers\CartObserver::class);
         // \App\Models\SalesOrder::observe(\App\Observers\SalesOrderObserver::class);
         \Nova::style('custom-css', public_path('css/store.css'));
 

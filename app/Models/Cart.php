@@ -55,7 +55,16 @@ class Cart extends BaseModel
     {
         return $this->belongsToMany(Goods::class)->withPivot('quantity', 'price', 'subtotal');
     }
-    
+
+    protected function summary()
+    {
+        $this->update([
+            'total_price' => $this->goods->sum('pivot.subtotal'),
+            'total_quantity' => $this->goods->sum('pivot.quantity'),
+        ]);
+        $this->updated_at = Carbon::now(); // trigger observer
+        $this->save();
+    }
     public function add($goods, $quantity = 1)
     {
         if ($exists = $this->goods()->find($goods->id)) {
@@ -74,8 +83,8 @@ class Cart extends BaseModel
             ];
             $this->goods()->attach($goods, $pivot);
         }
-        $this->updated_at = Carbon::now(); // trigger observer
-        $this->save(); 
+        $this->save();
+        $this->summary();
     }
     
     public function change($goods, $quantity)
@@ -92,23 +101,29 @@ class Cart extends BaseModel
                 $this->goods()->updateExistingPivot($goods, $pivot);
             }
         }
-        $this->updated_at = Carbon::now(); // trigger observer
-        $this->save(); 
+        // $this->updated_at = Carbon::now(); // trigger observer
+        $this->save();
+        $this->summary();
     }
     
     public function remove($goods)
     {
         if ($goods = $this->goods()->find($goods->id)) {
             $this->goods()->detach($goods);
-            $this->updated_at = Carbon::now(); // trigger observer
+            // $this->updated_at = Carbon::now(); // trigger observer
             $this->save();
+            $this->summary();
         }
     }
     
     public function clear()
     {
         $this->goods()->sync([]);
-        $this->updated_at = Carbon::now();
+        // $this->updated_at = Carbon::now();
+        $this->update([
+            'total_price' => 0,
+            'total_quantity' => 0,
+        ]);
         $this->save();
     }
 

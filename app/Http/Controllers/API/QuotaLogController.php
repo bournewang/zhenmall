@@ -18,7 +18,7 @@ class QuotaLogController extends ApiBaseController
      */
     public function index(Request $request)
     {
-        $records = $this->user->quotaLogs();
+        $records = $this->user->quotaLogs()->orderBy('id', 'desc');
         $total = $records->count();
         $perpage = $request->input('perpage', 20);
         $data = [

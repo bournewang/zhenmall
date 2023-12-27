@@ -99,7 +99,8 @@ class OrderController extends ApiBaseController
                 if (($this->user->balance * 100) < ($cart->total_price * 100) ){
                     $this->sendError("余额不足: ".money($this->user->balance));
                 }
-                BalanceLogHelper::consume($this->user, $order->amount, "下单抵扣");
+                $log = BalanceLogHelper::consume($this->user, $order->amount, "下单抵扣");
+                $this->user->update(['balance' => $log->balance]);
                 RedPacketHelper::sendRedPackets($order);
                 $order->update(['status' => Order::PAID]);
             }

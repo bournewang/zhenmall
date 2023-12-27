@@ -44,21 +44,12 @@ class RedPacketHelper
             // update owner's rewards_expires_at and quota
             $expires_at = ($owner->rewards_expires_at ? Carbon::parse($owner->rewards_expires_at) : Carbon::today())
                 ->addDays($config['rewards_days'])->toDateString();
-            $quota_balance = $owner->quota + $config['rewards_quota'];
+            $log = QuotaLogHelper::create($owner, $config['rewards_quota'], "下单");
             $owner->update([
                 'rewards_expires_at' => $expires_at,
-                'quota' => $quota_balance
+                'quota' => $log->balance
             ]);
-            QuotaLog::create([
-                'store_id' => $order->store_id,
-                'user_id' => $owner->id,
-                'type' => 'deposit',
-                'amount' => $config['rewards_quota'],
-                'balance' => $quota_balance,
-                'comment' => "下单",
-                // 'open' => true
-            ]);
-            \Log::debug("update rewards_expires_at to $expires_at, add quota ".$config['rewards_quota']." to $quota_balance");
+            \Log::debug("update rewards_expires_at to $expires_at, add quota ".$config['rewards_quota']." to ".$log->balance);
 
             \Log::debug("send red packets, category id: ".$goods->category_id.", level: ".$config['common_wealth_level']);
             $level = 1;
@@ -68,10 +59,9 @@ class RedPacketHelper
             }
             do {
                 $amount = rand($config['rewards_range']['min'], $config['rewards_range']['max']);
-                $balance = $referer->balance + $amount;
-                \Log::debug("sent redpacket for $referer->id amount: $amount, balance: $balance");
-                BalanceLogHelper::deposit($referer, $amount, "下单红包");
-                $referer->update(['balance' => $balance]);
+                // $balance = $referer->balance + $amount;
+                \Log::debug("sent redpacket for $referer->id amount: $amount");
+                self::create($referer, $amount);
 
                 // send red packet for referer
                 if (!$referer = User::find($referer->referer_id)) {

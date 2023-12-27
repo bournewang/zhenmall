@@ -49,7 +49,7 @@ class WechatController extends ApiBaseController
                 return $this->sendResponse($user->info());
             }
         }
-        return $this->sendError('no user', [
+        return $this->sendError('no openid', [
             'session_key' => $data['session_key']
         ]);
     }
@@ -67,8 +67,7 @@ class WechatController extends ApiBaseController
      *           @OA\Schema(
      *               type="object",
      *               @OA\Property(property="session_key",description="session key from login api response",type="string"),
-     *               @OA\Property(property="iv",description="iv from wx.login",type="string"),
-     *               @OA\Property(property="encryptedData",description="encryptedData from wx.login",type="string"),
+     *               @OA\Property(property="code",description="code for phone number",type="string"),
      *               @OA\Property(property="store_id",description="store id from init",type="integer"),
      *               @OA\Property(property="referer_id",description="referer id from init",type="integer"),
      *           )
@@ -86,43 +85,48 @@ class WechatController extends ApiBaseController
             // throw new ApiException("no code");
         }
         $mpp = \EasyWeChat::miniProgram();
-        $iv = $request->get('iv');
-        $encryptedData = $request->get('encryptedData');
-        $data = $mpp->encryptor->decryptData($session_key, $iv, $encryptedData);
-        \Log::debug("decrypt data: ");
+        $data = $mpp->phone_number->getUserPhoneNumber($request->input('code'));
         \Log::debug($data);
+        if (!isset($data['errcode']) || $data['errcode'] != 0) {
+            return $this->sendError("fetch phone number failed: ".$data['errmsg']);
+        }
+        $phone_number = $data['phone_info']['purePhoneNumber'] ?? $data['phone_info']['phoneNumber'];
 
-        // if ($sess = \Cache::get("wx.session.".$session_key)) {
-            // $session = json_decode($sess, 1);
-        if (!$openid = ($data['openId'] ?? null)) {
-            return $this->sendError("no openId in decrypt data");
+        if (!$string = \Cache::get("wx.session.".$session_key)) {
+            return $this->sendError("no session found with key: $session_key");
+        }
+        $session = json_decode($string, 1);
+        if (!$openid = ($session['openid'] ?? null)) {
+            return $this->sendError("no openid in session data");
         }
 
-            $unionid = $data['unionid'] ?? null;
-            $store_id = intval($request->input('store_id', null));
-            $store_id = $store_id > 0 ? $store_id : null;
-            if (!$user = User::where('openid', $openid)->first()) {
-                \Log::debug("try to create user: ");
-                $user = User::create([
-                    'store_id'  => $store_id,
-                    'referer_id' => $request->input('referer_id', null),
-                    'openid'    => $openid,
-                    'unionid'   => $unionid,
-                    'email'     => $openid."@wechat.com",
-                    'name'      => $data['nickName'] ?? null,
-                    'nickname'  => $data['nickName'] ?? null,
-                    'avatar'    => $data['avatarUrl'] ?? null,
-                    'province'  => $data['province'] ?? null,
-                    'city'      => $data['city'] ?? null,
-                    'password'  => bcrypt($openid)
-                ]);
-                $user->refreshToken();
-                \Auth::login($user);
-                \Log::debug("user: $user->id");
-                return $this->sendResponse($user->info());
-            }
-        // }
-        // return $this->sendError("no openId in decrypt data");
+        $store_id = intval($request->input('store_id', null));
+        $store_id = $store_id > 0 ? $store_id : null;
+        if (!$user = User::where('mobile', $phone_number)->first()) {
+            \Log::debug("try to create user: ");
+            $user = User::create([
+                'store_id'  => $store_id,
+                'referer_id' => $request->input('referer_id', null),
+                'openid'    => $openid,
+                'email'     => $openid."@wechat.com",
+                'name'      => $phone_number,
+                'nickname'  => null,
+                'password'  => bcrypt($openid)
+            ]);
+        }else{
+            \Log::debug("update openid to user $user->id ");
+            $user->update([
+                'store_id'  => $store_id,
+                'openid'    => $openid,
+                'email'     => $openid."@wechat.com",
+                'password'  => bcrypt($openid)
+            ]);
+        }
+
+        $user->refreshToken();
+        \Auth::login($user);
+        \Log::debug("user: $user->id");
+        return $this->sendResponse($user->info());
     }
 
     public function notify(Request $request)

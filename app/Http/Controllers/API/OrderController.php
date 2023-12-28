@@ -7,7 +7,7 @@ use App\Models\Order;
 use App\Models\Address;
 use App\Models\Review;
 use App\Helpers\BalanceLogHelper;
-use App\Helpers\RedPacketHelper;
+use App\Helpers\OrderHelper;
 
 class OrderController extends ApiBaseController
 {    
@@ -101,7 +101,7 @@ class OrderController extends ApiBaseController
                 }
                 $log = BalanceLogHelper::consume($this->user, $order->amount, "下单抵扣");
                 $this->user->update(['balance' => $log->balance]);
-                RedPacketHelper::sendRedPackets($order);
+                OrderHelper::profitSplit($order);
                 $order->update(['status' => Order::PAID]);
             }
 

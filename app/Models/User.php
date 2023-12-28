@@ -43,7 +43,7 @@ class User extends Authenticatable implements HasMedia
         'password',
         'status',
         'rewards_expires_at',
-        // 'level',
+        'level',
         // 'dd',
         // 'dds',  // number of dd
         // 'ppv',  // personal point value

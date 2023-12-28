@@ -31,6 +31,7 @@ class CreateOrdersTable extends Migration
             $table->integer('ship_status')->nullable();
             $table->dateTime('paid_at')->nullable();
             $table->dateTime('refund_at')->nullable();
+            $table->boolean('profit_splited')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

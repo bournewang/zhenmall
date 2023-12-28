@@ -67,6 +67,13 @@ return [
             'days' => 14,
         ],
 
+        'money' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/money.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 60,
+        ],
+
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),

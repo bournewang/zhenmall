@@ -36,7 +36,8 @@ class Order extends BaseModel
         'waybill_number',
         'ship_status',
         'paid_at',
-        'refund_at'
+        'refund_at',
+        'profit_splited'
     ];
 
     protected $casts = [

@@ -102,25 +102,22 @@ class WechatController extends ApiBaseController
 
         $store_id = intval($request->input('store_id', null));
         $store_id = $store_id > 0 ? $store_id : null;
+        $setting = Setting::first();
+        $info = [
+            'store_id'  => $store_id,
+            'openid'    => $openid,
+            'email'     => $openid."@wechat.com",
+            'password'  => bcrypt($openid),
+            'rewards_expires_at' => Carbon::today()->addDays($setting->level_0_rewards_days),
+            'level'     => 0
+        ];
         if (!$user = User::where('mobile', $phone_number)->first()) {
             \Log::debug("try to create user: ");
-            $user = User::create([
-                'store_id'  => $store_id,
-                'referer_id' => $request->input('referer_id', null),
-                'openid'    => $openid,
-                'email'     => $openid."@wechat.com",
-                'name'      => $phone_number,
-                'nickname'  => null,
-                'password'  => bcrypt($openid)
-            ]);
+            $info['referer_id'] = $request->input('referer_id', null);
+            $user = User::create($info);
         }else{
             \Log::debug("update openid to user $user->id ");
-            $user->update([
-                'store_id'  => $store_id,
-                'openid'    => $openid,
-                'email'     => $openid."@wechat.com",
-                'password'  => bcrypt($openid)
-            ]);
+            $user->update($info);
         }
 
         $user->refreshToken();
@@ -173,5 +170,7 @@ class WechatController extends ApiBaseController
     {
         \Log::debug(__CLASS__.'->'.__FUNCTION__);
         \Log::debug($request->all());
+
+
     }
 }

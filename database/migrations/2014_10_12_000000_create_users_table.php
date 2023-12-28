@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->decimal('balance', 10, 2)->nullable();
             $table->decimal('quota', 10, 2)->nullable();
             $table->date('rewards_expires_at')->nullable();
+            $table->integer('level')->default(0);
 
             $table->string('wechat', 24)->nullable();
             $table->string('bank_key', 24)->nullable();

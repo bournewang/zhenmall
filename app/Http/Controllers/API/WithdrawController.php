@@ -46,6 +46,8 @@ class WithdrawController extends ApiBaseController
         }
 
         WithdrawHelper::create($this->user, $amount);
+        $this->user->update(['balance' => ($this->user->balance - $amount)]);
+        
         return $this->sendResponse(null);
     }
 

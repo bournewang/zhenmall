@@ -32,13 +32,17 @@ class Withdraw extends BaseModel
         'id',
     ];
 
-    const GRANT = 'grant';
-    const REJECT = 'reject';
+    const AUDITING = 'auditing';
+    const PROCESSING = 'processing';
+    const COMPLETED = 'completed';
+    const REJECTED = 'rejected';
     static public function statusOptions()
     {
         return [
-            self::GRANT => __(ucfirst(self::GRANT)),
-            self::REJECT => __(ucfirst(self::REJECT))
+            self::AUDITING  => __(ucfirst(self::AUDITING)),
+            self::PROCESSING=> __(ucfirst(self::PROCESSING)),
+            self::COMPLETED => __(ucfirst(self::COMPLETED)),
+            self::REJECTED  => __(ucfirst(self::REJECTED))
         ];
     }
 

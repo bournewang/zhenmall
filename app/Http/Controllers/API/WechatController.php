@@ -168,4 +168,10 @@ class WechatController extends ApiBaseController
         });
         $response->send();
     }
+
+    public function withdrawNotify(Request $request)
+    {
+        \Log::debug(__CLASS__.'->'.__FUNCTION__);
+        \Log::debug($request->all());
+    }
 }

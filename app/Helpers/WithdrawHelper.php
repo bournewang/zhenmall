@@ -10,7 +10,7 @@ class WithdrawHelper
             'store_id'  => $user->store_id,
             'user_id'   => $user->id,
             'amount'    => $amount,
-            'status'    => null
+            'status'    => Withdraw::AUDITING
         ]);
     }
 }

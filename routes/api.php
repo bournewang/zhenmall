@@ -60,6 +60,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/wxapp/register',      [WechatController::class, 'register']);
     Route::post('/wxapp/login',         [WechatController::class, 'login']);
     Route::any ('/wechat/notify',       [WechatController::class, 'notify']);
+    Route::any ('/wechat/withdraw-notify',       [WechatController::class, 'withdrawNotify']);
     Route::post('/mapp/notify',         [MappController::class, 'notify']);
 
     Route::get ('/reviews',              [ReviewController::class, 'index']);

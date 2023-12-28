@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Withdraw extends Resource
@@ -52,6 +53,9 @@ class Withdraw extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            $this->moneyfield(__('Amount'), 'amount'),
+            Select::make(__('Status'), 'status')->options(\App\Models\Withdraw::statusOptions())->displayUsingLabels(),
+            $this->datetime()
         ];
     }
 
@@ -96,6 +100,9 @@ class Withdraw extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new Actions\GrantWidthdraw,
+            new Actions\RejectWidthdraw
+        ];
     }
 }

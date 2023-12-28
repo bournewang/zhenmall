@@ -20,6 +20,7 @@ class CreateWithdrawTable extends Migration
             $table->decimal('amount', 10,2);
             $table->enum('status', array_keys(\App\Models\Withdraw::statusOptions()))->nullable();
             $table->string('account')->nullable();
+            $table->string('transaction_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

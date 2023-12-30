@@ -91,7 +91,10 @@ class WechatController extends ApiBaseController
         if (!isset($data['errcode']) || $data['errcode'] != 0) {
             return $this->sendError("fetch phone number failed: ".$data['errmsg']);
         }
-        $phone_number = $data['phone_info']['purePhoneNumber'] ?? $data['phone_info']['phoneNumber'];
+        $phone_number = ($data['phone_info']['purePhoneNumber'] ?? $data['phone_info']['phoneNumber']) ?? null;
+        if (!$phone_number || strlen($phone_number) < 10) {
+            return $this->sendError("请授权手机号码！");
+        }
 
         if (!$string = \Cache::get("wx.session.".$session_key)) {
             return $this->sendError("no session found with key: $session_key");
@@ -107,6 +110,7 @@ class WechatController extends ApiBaseController
         $info = [
             'store_id'  => $store_id,
             'openid'    => $openid,
+            'mobile'    => $phone_number,
             'email'     => $openid."@wechat.com",
             'password'  => bcrypt($openid),
             'rewards_expires_at' => Carbon::today()->addDays($setting->level_0_rewards_days),

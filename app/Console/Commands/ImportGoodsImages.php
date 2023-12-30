@@ -14,7 +14,7 @@ class ImportGoodsImages extends Command
      *
      * @var string
      */
-    protected $signature = 'import:goods-images {collection} {path}';
+    protected $signature = 'import:goods-images {collection} {csv_path}';
 
     /**
      * The console command description.
@@ -43,7 +43,7 @@ class ImportGoodsImages extends Command
         // $goods = Goods::find(712);
         // $goods->addMedia()->toMediaCollection("main");
         $collection = $this->argument("collection");
-        $path = $this->argument("path");
+        $path = $this->argument("csv_path");
 
         if (!$fp = fopen($path, "r")) {
             echo "CANNOT open $path\n";

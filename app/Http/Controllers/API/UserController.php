@@ -42,12 +42,29 @@ class UserController extends ApiBaseController
         return $this->sendResponse(null);
     }
 
-    // nickname: 誉锟
-    // avatar: https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKCmhcdIpvbvbnic0gFt4Tc8gfXpSGaYb5AHcqlr1vpw46ZYJiaAd22oYIqk93G2hpQeFY7fichcGutQ/132
-    // city: 闵行
-    // province: 上海
-    // gender: 1
-    public function modify($store_id, Request $request)
+    /**
+     * 修改用户信息
+     *
+     * @OA\Post(
+     *  path="/api/user/info",
+     *  tags={"User"},
+     *   @OA\RequestBody(
+     *       required=false,
+     *       @OA\MediaType(
+     *           mediaType="application/x-www-form-urlencoded",
+     *           @OA\Schema(
+     *               type="object",
+     *               @OA\Property(property="nickname",description="nickname",type="string"),
+     *               @OA\Property(property="avarar",description="avarar",type="url"),
+     *               @OA\Property(property="gender",description="1:male, 2:female",type="integer"),
+     *           )
+     *       )
+     *   ),
+     *  @OA\Response(response=200,description="successful operation"),
+     *  security={{ "api_key":{} }}
+     * )
+     */
+    public function profile(Request $request)
     {
         $this->user->update($request->all());
         \Log::debug("user ".$this->user->id." update ");
@@ -90,16 +107,6 @@ class UserController extends ApiBaseController
 
         return $this->sendResponse($this->user->info());
     }
-
-    // public function revenue(Request $request)
-    // {
-    //     $last_revenue = $this->user->revenues()->where('year', date('Y'))->where('index', date('m'))->first();
-    //     return $this->sendResponse([
-    //         'clearing_revenus'   => $this->user->revenues()->where('clearing_status', 1)->sum('total_income'),
-    //         'unclearing_revenus' => $this->user->revenues()->where('clearing_status', 0)->sum('total_income'),
-    //         'last_revenue' => $last_revenue ? $last_revenue->info() : null,
-    //     ]);
-    // }
 
     /**
      * 获取用户二维码

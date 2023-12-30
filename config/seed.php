@@ -60,8 +60,8 @@ return [
         "level_1_rewards_quota" => 300, //商品下单获得积分（额度）
         "level_1_rewards_referer" => 20,    //直推奖
         "level_1_common_wealth_level" => 5, //商品下单影响共富层级
-        "level_1_common_wealth_min" => 10,  //商品下单,共富红包下限
-        "level_1_common_wealth_max" => 20,  //商品下单,共富红包上限
+        "level_1_common_wealth_min" => 8,  //商品下单,共富红包下限
+        "level_1_common_wealth_max" => 10,  //商品下单,共富红包上限
 
         // 二级（499元）
         "level_2_cat_id" => 10001,
@@ -71,8 +71,8 @@ return [
         "level_2_rewards_quota" => 2000,//商品下单用户获得积分（额度）
         "level_2_rewards_referer" => 100,   //直推奖
         "level_2_common_wealth_level" => 8, //商品下单影响共富层级
-        "level_2_common_wealth_min" => 20,  //商品下单,共富红包下限
-        "level_2_common_wealth_max" => 60,  //商品下单,共富红包上限
+        "level_2_common_wealth_min" => 15,  //商品下单,共富红包下限
+        "level_2_common_wealth_max" => 25,  //商品下单,共富红包上限
         // 'banks' => [
         //     "ICBC" 	=> "中国工商银行",
         //     "CCB" 	=> "中国建设银行",

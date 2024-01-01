@@ -25,10 +25,10 @@ trait UserTrait{
             BelongsTo::make(__('Store'),'store', Store::class)->nullable(),
             Image::make(__('Avatar'), 'avatar')->maxWidth(50)->preview(function($val){return $val;})->thumbnail(function($val){return $val;}),
             Text::make(__('Nickname'), 'nickname'),
-            Text::make(__('Realname'), 'name')->sortable()->rules('required', 'max:255'),
-            Text::make(__('Province'), 'province'),
-            Text::make(__('City'), 'city'),
-            Text::make(__('Gender'), 'gender'),
+            // Text::make(__('Realname'), 'name')->sortable()->rules('required', 'max:255'),
+            // Text::make(__('Province'), 'province'),
+            // Text::make(__('City'), 'city'),
+            // Text::make(__('Gender'), 'gender'),
             Text::make(__('Mobile'), 'mobile'),
             $this->moneyfield(__('Balance'), 'balance'),
             $this->moneyfield(__('Withdraw Quota'), 'quota'),
@@ -40,7 +40,7 @@ trait UserTrait{
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
-            $this->mediaField(__('ID'), 'id card'),
+            // $this->mediaField(__('ID'), 'id card'),
         ];
     }
 }

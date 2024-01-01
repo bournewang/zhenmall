@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Setting;
 use App\Helpers\OrderHelper;
+use App\Helpers\RedPacketHelper;
 use Log;
 
 class WechatController extends ApiBaseController
@@ -116,12 +117,19 @@ class WechatController extends ApiBaseController
             'rewards_expires_at' => Carbon::today()->addDays($setting->level_0_rewards_days),
             'level'     => 0
         ];
-        if (!$user = User::where('mobile', $phone_number)->first()) {
-            \Log::debug("try to create user: ");
+        if (!$user = User::withTrashed()->firstWhere('mobile', $phone_number)) {
+            \Log::debug("try to create user: " . json_encode($info));
             $info['referer_id'] = $request->input('referer_id', null);
             $user = User::create($info);
+
+            // send redpacket
+            RedPacketHelper::registerPacket($user);
         }else{
-            \Log::debug("update openid to user $user->id ");
+            if ($user->deleted_at) {
+                \Log::debug("restore user $user->id");
+                $user->restore();
+            }
+            \Log::debug("update user $user->id: ".json_encode($info));
             $user->update($info);
         }
 

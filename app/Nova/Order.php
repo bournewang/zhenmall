@@ -65,7 +65,7 @@ class Order extends Resource
             // ID::make(__('ID'), 'id')->sortable(),
             BelongsTo::make(__('Store'), 'store', Store::class),
             BelongsTo::make(__('User'), 'user', User::class),
-            Text::make(__('Order No'), 'order_no'),
+            // Text::make(__('Order No'), 'order_no'),
             Text::make(__('Contact'), 'contact'),
             Text::make(__('Mobile'), 'mobile'),
             $this->addressFields(),
@@ -76,13 +76,14 @@ class Order extends Resource
                 ->text(__('Deliver'))
                 ->onlyOnDetail(),
             Panel::make(__('Logistic'), [
-                BelongsTo::make(__('Logistic'), 'logistic', Logistic::class)->nullable(),
-                Text::make(__('Waybill Number'), 'waybill_number')->onlyOnDetail(),
+                // BelongsTo::make(__('Logistic'), 'logistic', Logistic::class)->nullable(),
+                // Text::make(__('Waybill Number'), 'waybill_number')->onlyOnDetail(),
                 Select::make(__('Ship Status'), 'ship_status')->options(\App\Models\LogisticProgress::statusOptions())->displayUsingLabels(),
                 $this->editorField(__('Logistic Progress'), 'logisticProgress')->displayUsing(function(){
                     return !$this->logisticProgress ? null : $this->logisticProgress->detail();
                 })->onlyOnDetail()
             ]),
+            $this->datetime(),
 
             HasOne::make(__('Review'), 'review', Review::class),
             BelongsToMany::make(__('Goods'), 'goods', Goods::class)->fields(new Fields\CartItemFields)

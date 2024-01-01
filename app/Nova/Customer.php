@@ -92,8 +92,8 @@ class Customer extends Resource
         return [];
     }
 
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        return parent::indexQuery($request, $query)->where('type', \App\Models\User::CUSTOMER);
-    }
+    // public static function indexQuery(NovaRequest $request, $query)
+    // {
+    //     return parent::indexQuery($request, $query)->where('type', \App\Models\User::CUSTOMER);
+    // }
 }

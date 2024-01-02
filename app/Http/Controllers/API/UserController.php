@@ -120,6 +120,9 @@ class UserController extends ApiBaseController
      */
     public function qrcode()
     {
+        if ($this->user->qrcode){
+            return $this->sendResponse(url($this->user->qrcode));
+        }
         $mpp = \EasyWeChat::miniProgram();
         $response = $mpp->app_code->getUnlimit("referer_id=".$this->user->id, ['page' => 'pages/index/index', 'check_path' => false]);
         \Log::debug($response);

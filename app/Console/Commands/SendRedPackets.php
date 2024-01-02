@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 use App\Models\Setting;
+use App\Models\RedPacket;
 use App\Helpers\RedPacketHelper;
 
 class SendRedPackets extends Command
@@ -40,18 +41,17 @@ class SendRedPackets extends Command
      */
     public function handle()
     {
-        $users = User::where('rewards_expires_at', '>=', today())->get();
-        $setting = Setting::first();
+        // clear unopen daily red packets sent in previous days
+        RedPacket::where('open', 0)->where('type', RedPacket::TYPE_DAILY)->delete();
+
+        $users = User::all(); //where('rewards_expires_at', '>=', today())->get();
+        $min = 2 * 100; // 2
+        $max = 18 * 100; // 10
+        \Log::channel('money')->debug("red packet range, $min - $max");
         foreach ($users as $user) {
-            if ($user->level == 0) {
-                $amount = rand($setting->level_0_rewards_min, $setting->level_0_rewards_max);
-            }elseif ($user->level == 1) {
-                $amount = rand($setting->level_1_rewards_min, $setting->level_1_rewards_max);
-            }elseif ($user->level == 2) {
-                $amount = rand($setting->level_2_rewards_min, $setting->level_2_rewards_max);
-            }
-            \Log::channel('money')->debug("create redpacket for user {$user->id} level: {$user->level}, amount: $amount");
-            RedPacketHelper::create($user, $amount);
+            $amount = round(rand($min, $max)/100, 2);
+            \Log::channel('money')->debug("create redpacket for user {$user->id} amount: $amount");
+            RedPacketHelper::create($user, $amount, RedPacket::TYPE_DAILY);
         }
         return 0;
     }

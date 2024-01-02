@@ -33,6 +33,24 @@ class RedPacket extends BaseModel
         'id',
     ];
 
+    const TYPE_REGISTER = 'register';
+    const TYPE_DAILY = 'daily';
+    const TYPE_ORDER = 'ordering';
+
+    static public function typeOptions()
+    {
+        return [
+            self::TYPE_REGISTER => __(ucfirst(self::TYPE_REGISTER)),
+            self::TYPE_DAILY    => __(ucfirst(self::TYPE_DAILY)),
+            self::TYPE_ORDER    => __(ucfirst(self::TYPE_ORDER)),
+        ];
+    }
+
+    public function typeLabel()
+    {
+        return self::typeOptions()[$this->type];
+    }
+
     public function store()
     {
         return $this->belongsTo(Store::class);

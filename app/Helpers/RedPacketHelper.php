@@ -7,13 +7,14 @@ use App\Models\User;
 
 class RedPacketHelper
 {
-    static public function create($user, $amount)
+    static public function create($user, $amount, $type=null)
     {
         return RedPacket::create([
             'store_id' => $user->store_id,
             'user_id' => $user->id,
             'amount' => $amount,
-            'open' => 0
+            'open' => 0,
+            'type' => $type
         ]);
     }
     static public function open($user, $red_packet)
@@ -60,6 +61,6 @@ class RedPacketHelper
         $max = 20 * 100; // 10
         $amount = round(rand($min, $max)/100, 2);
         \Log::channel('money')->debug("create redpacket for user {$user->id} amount: $amount");
-        self::create($user, $amount);
+        self::create($user, $amount, RedPacket::TYPE_REGISTER);
     }
 }

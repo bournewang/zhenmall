@@ -2,6 +2,7 @@
 namespace App\Helpers;
 use App\Models\User;
 use App\Models\Setting;
+use App\Models\RedPacket;
 use Carbon\Carbon;
 
 class OrderHelper
@@ -74,7 +75,7 @@ class OrderHelper
                 $amount = rand($common_wealth_min, $common_wealth_max);
                 // $balance = $referer->balance + $amount;
                 \Log::debug("create redpacket for user $referer->id amount: $amount");
-                RedPacketHelper::create($referer, $amount);
+                RedPacketHelper::create($referer, $amount, RedPacket::TYPE_ORDER);
 
                 // send red packet for referer
                 if (!$referer = User::find($referer->referer_id)) {

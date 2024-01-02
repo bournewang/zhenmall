@@ -19,6 +19,7 @@ class RedPacket extends BaseModel
         'store_id',
         'user_id',
         'amount',
+        'type',
         'open'
     ];
 

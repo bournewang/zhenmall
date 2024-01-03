@@ -286,6 +286,7 @@ class User extends Authenticatable implements HasMedia
             'county',
             'balance',
             'quota',
+            'alipay',
             'api_token'
         ];
         foreach ($attrs as $attr){

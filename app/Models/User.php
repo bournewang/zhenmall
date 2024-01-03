@@ -47,6 +47,7 @@ class User extends Authenticatable implements HasMedia
         'status',
         'rewards_expires_at',
         'level',
+        'alipay',
         // 'dd',
         // 'dds',  // number of dd
         // 'ppv',  // personal point value

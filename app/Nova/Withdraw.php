@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Withdraw extends Resource
@@ -53,7 +55,9 @@ class Withdraw extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            BelongsTo::make(__('User'), 'user', User::class)->sortable(),
             $this->moneyfield(__('Amount'), 'amount'),
+            Text::make(__('Alipay'), 'alipay')->displayUsing(function(){return $this->user->alipay;}),
             Select::make(__('Status'), 'status')->options(\App\Models\Withdraw::statusOptions())->displayUsingLabels(),
             $this->datetime()
         ];

@@ -33,6 +33,7 @@ trait UserTrait{
             $this->moneyfield(__('Balance'), 'balance'),
             $this->moneyfield(__('Withdraw Quota'), 'quota'),
             Date::make(__("Rewards Expires"), "rewards_expires_at"),
+            Text::make(__('Alipay'), 'alipay'),
             BelongsTo::make(__('Referer'), 'referer', User::class),
             Select::make(__("Status"), 'status')->options(function(){return \App\Models\User::statusOptions();})->displayUsingLabels(),
 

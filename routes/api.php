@@ -29,6 +29,7 @@ use App\Http\Controllers\API\BalanceLogController;
 use App\Http\Controllers\API\QuotaLogController;
 use App\Http\Controllers\API\RedPacketController;
 use App\Http\Controllers\API\WithdrawController;
+use App\Http\Controllers\API\UnionPayController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -62,6 +63,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::any ('/wechat/notify',       [WechatController::class, 'notify']);
     Route::any ('/wechat/withdraw-notify',       [WechatController::class, 'withdrawNotify']);
     Route::post('/mapp/notify',         [MappController::class, 'notify']);
+    Route::any ('/unionpay/notify',     [UnionPayController::class, 'notify']);
 
     Route::get ('/reviews',              [ReviewController::class, 'index']);
     Route::get ('/reviews/{id}',         [ReviewController::class, 'detail']);

@@ -36,10 +36,6 @@ class Signature{
 			//获取私钥证书内容
 			$privatePem=file_get_contents($this->privateKey);
 
-			echo "private key file: ".$this->privateKey."\n";
-			if (file_exists($this->privateKey)){
-				echo "file exists: ".$this->privateKey."\n";
-			}
 			// echo "private key pem: ".$privatePem."\n";
 			//获取私钥
 		    $privateKey = openssl_get_privatekey($privatePem);
@@ -91,8 +87,6 @@ class Signature{
 
 		    $flag=openssl_verify($data,$sign, $publicKey,$this->algorithm["desc"]);
 
-			echo "private key: ";
-			var_dump($publicKey);
 		     openssl_free_key($publicKey);
 
 		     return $flag;

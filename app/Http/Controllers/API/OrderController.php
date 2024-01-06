@@ -103,7 +103,7 @@ class OrderController extends ApiBaseController
                 $b_log = BalanceLogHelper::consume($this->user, $order->amount, "下单抵扣");
                 $q_log = QuotaLogHelper::create($this->user, $order->amount * -1, "下单抵扣");
                 $this->user->update(['balance' => $b_log->balance, 'quota' => $q_log->balance]);
-                OrderHelper::profitSplit($order);
+                // OrderHelper::profitSplit($order);
                 $order->update(['status' => Order::PAID]);
             }
 

@@ -44,7 +44,7 @@ class SendRedPackets extends Command
         // clear unopen daily red packets sent in previous days
         RedPacket::where('open', 0)->where('type', RedPacket::TYPE_DAILY)->delete();
 
-        $users = User::all(); //where('rewards_expires_at', '>=', today())->get();
+        $users = User::where('rewards_expires_at', '>=', today())->get();
         $min = 2 * 100; // 2
         $max = 18 * 100; // 10
         \Log::channel('money')->debug("red packet range, $min - $max");

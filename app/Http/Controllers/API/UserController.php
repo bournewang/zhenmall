@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Helpers\UserHelper;
 
 class UserController extends ApiBaseController
 {
@@ -136,5 +137,20 @@ class UserController extends ApiBaseController
             return $this->sendResponse(url($url));
         }
         return $this->sendError("获取二维码失败");
+    }
+
+    /**
+     * 获取用户分销网体
+     *
+     * @OA\Get(
+     *  path="/api/user/team",
+     *  tags={"User"},
+     *  @OA\Response(response=200,description="successful operation"),
+     *  security={{ "api_key":{} }}
+     * )
+     */
+    public function team()
+    {
+        return $this->sendResponse(UserHelper::team($this->user));
     }
 }

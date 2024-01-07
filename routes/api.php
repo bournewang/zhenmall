@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/user/mobile',         [UserController::class, 'mobile']);
     Route::get ('/user/revenue',        [UserController::class, 'revenue']);
     Route::get ('/user/qrcode',         [UserController::class, 'qrcode']);
+    Route::get ('/user/team',           [UserController::class, 'team']);
     Route::post ('/health',             [HealthController::class, 'create']);
     Route::get ('/health',              [HealthController::class, 'index']);
     Route::get ('/health/{id}',         [HealthController::class, 'show']);

@@ -15,9 +15,10 @@ return [
 	    // 'DeviceRental',
 	    // 'MembershipCard', 'MembershipUsedItem',
 	    // 'Bill', 'BillItem',
-        "Address","Banner","Cart","Category","City",
-        "Customer","District","Goods","Logistic","Order",
-        "Province","Revenue","Salesman","Setting","Store","Supplier","User",
+        "Address","Banner","Category",
+        "Goods","Logistic","Order",
+        "Customer","Manager",
+        "Setting","Store","Supplier","User",
         "Review", "RedPacket", "BalanceLog", "QuotaLog"
         // "PurchaseOrder","SalesOrder","Stock", "StockItem", 'Health',
     ],
@@ -53,7 +54,7 @@ return [
         "level_0_rewards_max" => 3, // 注册用户可领红包数额上限
 
         // 一级（99元）
-        "level_1_cat_id" => 10000,
+        "level_1_cat_id" => 50,
         "level_1_rewards_days" => 180,  // 用户可领红包天数
         "level_1_rewards_min" => 1,     // 用户可领红包数额下限
         "level_1_rewards_max" => 5,     // 用户可领红包数额上限
@@ -64,7 +65,7 @@ return [
         "level_1_common_wealth_max" => 10,  //商品下单,共富红包上限
 
         // 二级（499元）
-        "level_2_cat_id" => 10001,
+        "level_2_cat_id" => 21,
         "level_2_rewards_days" => 365,  // 用户可领红包天数
         "level_2_rewards_min" => 1,     // 用户可领红包数额下限
         "level_2_rewards_max" => 5,     // 用户可领红包数额上限
@@ -105,38 +106,28 @@ return [
     ],
     'user' => [
         ['id' => 1, 'name' => 'System Admin', 'nickname' => 'System Admin', 'email' =>'admin@test.com',    'mobile' =>  '13811111110', 'password' => '111111', 'openid' => '111110', 'unionid' => '111110'],
-        ['id' => 2, 'name' => '王业务员', 'nickname' => '王业务员','email' => 'sales@test.com',   'mobile' => '13811111111',  'password' => '111111', 'referer_id' => null, 'openid' => '111111', 'unionid' => '111111', 'type' => User::SALESMAN],
-        ['id' => 3, 'name' => '张店长', 'nickname' => '张店长','email' => 'zhang@test.com',       'mobile' => '13811111112',  'password' => '111111', 'store_id' => 1, 'referer_id' => null, 'openid' => '111112', 'unionid' => '111112', 'type' => User::MANAGER, 'api_token' => '111111'],
-        ['id' => 4, 'name' => '小刘/店员', 'nickname' => '小刘','email' => 'liu@test.com',        'mobile' => '13811111113',    'password' => '111111', 'store_id' => 1, 'referer_id' => null,    'openid' => '111113', 'unionid' => '111113', 'type' => User::CLERK],
-        ['id' => 5, 'name' => '老赵',  'nickname' => '老赵', 'email' => 'zhao@test.com',       'mobile' => '13811111114',  'password' => '111111', 'store_id' => 1, 'referer_id' => 4,    'openid' => '111114', 'unionid' => '111114', 'type' => User::CUSTOMER],
-        ['id' => 6, 'name' => '黄医生',  'nickname' => '黄医生', 'email' => 'huang@test.com',   'mobile' => '13811111115',  'password' => '111111', 'openid' => '111116', 'unionid' => '111116','referer_id' => 5, 'type' => User::EXPERT],
-        ['id' => 7, 'name' => '李晓丽',  'nickname' => '财务李', 'email' => 'xiaoli@test.com',   'mobile' => '13811111116',  'password' => '111111', 'openid' => '111117', 'unionid' => '111117', 'referer_id' => 6,'type' => User::FINANCE],
-        ['id' => 8, 'name' => '刘琳琳',  'nickname' => '仓管', 'email' => 'liulin@test.com',   'mobile' => '13811111117',  'password' => '111111', 'openid' => '111118', 'unionid' => '111118', 'referer_id' => 7,'type' => User::STORE_KEEPER],
-        ['id' => 9, 'name' => '唐小名',  'nickname' => '副店长', 'email' => 'tang@test.com',   'mobile' => '13811111118',  'password' => '111111', 'openid' => '111119', 'unionid' => '111119', 'referer_id' => 8,'type' => User::VICE_MANAGER],
+        // ['id' => 2, 'name' => '王业务员', 'nickname' => '王业务员','email' => 'sales@test.com',   'mobile' => '13811111111',  'password' => '111111', 'referer_id' => null, 'openid' => '111111', 'unionid' => '111111', 'type' => User::SALESMAN],
+        ['id' => 2, 'name' => '张店长', 'nickname' => '张店长','email' => 'zhang@test.com',       'mobile' => '13811111112',  'password' => '111111', 'store_id' => 1, 'referer_id' => null, 'openid' => '111112', 'unionid' => '111112', 'type' => User::MANAGER, 'api_token' => '111111'],
+        // ['id' => 4, 'name' => '小刘/店员', 'nickname' => '小刘','email' => 'liu@test.com',        'mobile' => '13811111113',    'password' => '111111', 'store_id' => 1, 'referer_id' => null,    'openid' => '111113', 'unionid' => '111113', 'type' => User::CLERK],
+        ['id' => 3, 'name' => '老赵',  'nickname' => '老赵', 'email' => 'zhao@test.com',       'mobile' => '13811111114',  'password' => '111111', 'store_id' => 1, 'referer_id' => 2,    'openid' => '111114', 'unionid' => '111114', 'type' => User::CUSTOMER],
+        // ['id' => 6, 'name' => '黄医生',  'nickname' => '黄医生', 'email' => 'huang@test.com',   'mobile' => '13811111115',  'password' => '111111', 'openid' => '111116', 'unionid' => '111116','referer_id' => 5, 'type' => User::EXPERT],
+        // ['id' => 7, 'name' => '李晓丽',  'nickname' => '财务李', 'email' => 'xiaoli@test.com',   'mobile' => '13811111116',  'password' => '111111', 'openid' => '111117', 'unionid' => '111117', 'referer_id' => 6,'type' => User::FINANCE],
+        // ['id' => 8, 'name' => '刘琳琳',  'nickname' => '仓管', 'email' => 'liulin@test.com',   'mobile' => '13811111117',  'password' => '111111', 'openid' => '111118', 'unionid' => '111118', 'referer_id' => 7,'type' => User::STORE_KEEPER],
+        // ['id' => 9, 'name' => '唐小名',  'nickname' => '副店长', 'email' => 'tang@test.com',   'mobile' => '13811111118',  'password' => '111111', 'openid' => '111119', 'unionid' => '111119', 'referer_id' => 8,'type' => User::VICE_MANAGER],
     ],
     'address' => [
         [
+            'user_id' => 2,
+            'contact' => '小张',
+            'mobile' => '13322223333',
+            'province_id' => 2,
+            'city_id' => 16,
+            'district_id' => 228,
+            'street' => 'xxx路222号4-1',
+            'default' => true
+        ],
+        [
             'user_id' => 3,
-            'contact' => '小张',
-            'mobile' => '13322223333',
-            'province_id' => 2,
-            'city_id' => 16,
-            'district_id' => 228,
-            'street' => 'xxx路222号4-1',
-            'default' => true
-        ],
-        [
-            'user_id' => 4,
-            'contact' => '小张',
-            'mobile' => '13322223333',
-            'province_id' => 2,
-            'city_id' => 16,
-            'district_id' => 228,
-            'street' => 'xxx路222号4-1',
-            'default' => true
-        ],
-        [
-            'user_id' => 5,
             'contact' => '小张',
             'mobile' => '13322223333',
             'province_id' => 2,

@@ -32,15 +32,17 @@ trait UserTrait{
             Text::make(__('Mobile'), 'mobile'),
             $this->moneyfield(__('Balance'), 'balance'),
             $this->moneyfield(__('Withdraw Quota'), 'quota'),
+            Text::make(__('Level'), 'level')->exceptOnForms(),
             Date::make(__("Rewards Expires"), "rewards_expires_at"),
             Text::make(__('Alipay'), 'alipay'),
-            BelongsTo::make(__('Referer'), 'referer', User::class),
+            BelongsTo::make(__('Referer'), 'referer', User::class)->searchable()->nullable(),
             Select::make(__("Status"), 'status')->options(function(){return \App\Models\User::statusOptions();})->displayUsingLabels(),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+            // Password::make('Password')
+            //     ->onlyOnForms()
+            //     ->creationRules('required', 'string', 'min:8')
+            //     ->updateRules('nullable', 'string', 'min:8')
+            //     ->nullable(),
             // $this->mediaField(__('ID'), 'id card'),
         ];
     }

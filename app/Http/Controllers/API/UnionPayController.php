@@ -5,9 +5,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
-require(base_path("updc/utils/CommonUtil.php"));
-require(base_path("updc/utils/CharacterUtil.php"));
-require(base_path("updc/bean/Algorithm.php"));
+// require(base_path("updc/utils/CommonUtil.php"));
+// require(base_path("updc/utils/CharacterUtil.php"));
+// require(base_path("updc/bean/Algorithm.php"));
 use updc\utils\CharacterUtil;
 use updc\utils\CommonUtil;
 use updc\bean\Algorithm;

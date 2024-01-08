@@ -6,12 +6,13 @@ function cache1($tags, $key, $callback, $expires = null)
     // \Log::debug(__FUNCTION__);
     $cache = Cache::store('redis')->tags($tags);
     if ($cache->has($key)){
-        // \Log::debug(" +++++++ from   cache $key");
+        \Log::debug(" ------- from   cache $key");
         return $cache->get($key);
     }else{
         $value = call_user_func($callback);
-        // \Log::debug(" +++++++ refresh cache $key $value");
-        $cache->put($key, json_encode($value), $expires ?? 3600 * 24);
+        $str = json_encode($value);
+        \Log::debug(" +++++++ refresh cache $key $str");
+        $cache->put($key, $str, $expires ?? 3600 * 24);
         return $value;
     }
 }

@@ -70,7 +70,7 @@ class User extends Authenticatable implements HasMedia
     ];
 
     public static $rules = [
-        'name' => 'required|string',
+        'name' => 'string',
         'gender' => 'integer',
         'mobile' => 'required',
         'rewards_expires_at' => 'date',
@@ -150,13 +150,13 @@ class User extends Authenticatable implements HasMedia
         $roles = [];
         foreach ([
             self::CUSTOMER,
-            self::SALESMAN,
+            // self::SALESMAN,
             self::MANAGER,
-            self::VICE_MANAGER,
-            self::CLERK,
-            self::EXPERT,
-            self::FINANCE,
-            self::STORE_KEEPER,
+            // self::VICE_MANAGER,
+            // self::CLERK,
+            // self::EXPERT,
+            // self::FINANCE,
+            // self::STORE_KEEPER,
         ] as $role){
             $roles[$role] = __(ucwords(str_replace('_', ' ', $role)));
         }

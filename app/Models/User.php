@@ -295,7 +295,8 @@ class User extends Authenticatable implements HasMedia
         $data['qrcode'] = !$this->qrcode ? null : url(\Storage::url($this->qrcode));
         $data['store_name'] = $this->store->name ?? null;
         $data['type_label'] = $this->typeLabel();
-        $data['referer_name'] = $this->referer->nickname ?? ($this->referer->mobile ?? null); 
+        $data['referer_name'] = $this->referer->nickname ?? ($this->referer->mobile ?? null);
+        $data['useable_balance'] = min($this->balance, $this->quota);
         return $data;
     }
 

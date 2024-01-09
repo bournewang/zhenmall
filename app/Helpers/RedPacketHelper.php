@@ -57,10 +57,10 @@ class RedPacketHelper
 
     static public function registerPacket($user)
     {
-        $min = 2 * 100; // 2
-        $max = 20 * 100; // 10
+        $min = 1 * 100; // 2
+        $max = 2 * 100; // 10
         $amount = round(rand($min, $max)/100, 2);
-        \Log::channel('money')->debug("create redpacket for user {$user->id} amount: $amount");
+        \Log::debug("create redpacket for user {$user->id} amount: $amount");
         self::create($user, $amount, RedPacket::TYPE_REGISTER);
     }
 }

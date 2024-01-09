@@ -45,12 +45,12 @@ class SendRedPackets extends Command
         RedPacket::where('open', 0)->where('type', RedPacket::TYPE_DAILY)->delete();
 
         $users = User::where('rewards_expires_at', '>=', today())->get();
-        $min = 2 * 100; // 2
-        $max = 18 * 100; // 10
-        \Log::debug("red packet range, $min - $max");
+        $min = 1 * 100; // 2
+        $max = 2 * 100; // 10
+        \Log::channel('money')->debug("red packet range, $min - $max");
         foreach ($users as $user) {
             $amount = round(rand($min, $max)/100, 2);
-            \Log::debug("create redpacket for user {$user->id} amount: $amount");
+            \Log::channel('money')->debug("create redpacket for user {$user->id} amount: $amount");
             RedPacketHelper::create($user, $amount, RedPacket::TYPE_DAILY);
         }
         return 0;

@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use App\Helpers\WechatHelper;
+use App\Models\Withdraw;
 
 class GrantWidthdraw extends Action
 {
@@ -29,7 +30,8 @@ class GrantWidthdraw extends Action
     {
         //
         foreach ($models as $model) {
-            WechatHelper::withdraw($model);
+            // WechatHelper::withdraw($model);
+            $model->update(['status' => Withdraw::COMPLETED]);
         }
     }
 

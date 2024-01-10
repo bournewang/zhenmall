@@ -126,7 +126,7 @@ class UserController extends ApiBaseController
         }
         $mpp = \EasyWeChat::miniProgram();
         $response = $mpp->app_code->getUnlimit("referer_id=".$this->user->id, ['page' => 'pages/index/index', 'check_path' => false]);
-        \Log::debug($response);
+        // \Log::debug($response);
         // 保存小程序码到文件
         $filename = null;
         if ($response instanceof \EasyWeChat\Kernel\Http\StreamResponse) {
@@ -152,5 +152,20 @@ class UserController extends ApiBaseController
     public function team()
     {
         return $this->sendResponse(UserHelper::team($this->user));
+    }
+
+    /**
+     * 获取直推排行榜
+     *
+     * @OA\Get(
+     *  path="/api/direct-members-range",
+     *  tags={"User"},
+     *  @OA\Response(response=200,description="successful operation"),
+     *  security={{ "api_key":{} }}
+     * )
+     */
+    public function directRange()
+    {
+        return $this->sendResponse(UserHelper::directRange());
     }
 }

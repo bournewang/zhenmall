@@ -45,4 +45,19 @@ class UserHelper
         }, 3600);
     }
 
+    static public function directRange()
+    {
+        return cache1("direct-members", "direct-members-range", function(){
+            return DB::table('users as u1')
+                ->join("users as u2", "u1.referer_id", "=", "u2.id")
+                ->selectRaw("count(u1.id) as num, u1.referer_id, u2.nickname, u2.mobile")
+                ->whereNotNull('u1.referer_id')
+                ->groupBy("u1.referer_id")
+                ->orderByDesc("num")
+                ->limit(10)
+                ->get()
+                ->toArray();
+            }, 3600 * 24);
+    }
+
 }

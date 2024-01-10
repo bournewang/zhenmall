@@ -50,10 +50,10 @@ class UserHelper
         return cache1("direct-members", "direct-members-range", function(){
             return DB::table('users as u1')
                 ->join("users as u2", "u1.referer_id", "=", "u2.id")
-                ->selectRaw("count(u1.id) as num, u1.referer_id, u2.nickname, u2.mobile")
+                ->selectRaw("count(u1.id) as direct_members, u1.referer_id, u2.nickname, u2.mobile")
                 ->whereNotNull('u1.referer_id')
                 ->groupBy("u1.referer_id")
-                ->orderByDesc("num")
+                ->orderByDesc("direct_members")
                 ->limit(10)
                 ->get()
                 ->toArray();

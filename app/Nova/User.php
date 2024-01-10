@@ -61,6 +61,8 @@ class User extends Resource
         return array_merge($this->userFields($request), [
             RoleSelect::make(__('Roles'), 'roles'),
             HasMany::make(__("Address"), 'addresses', Address::class),
+            HasMany::make(__("Balance Log"), 'balanceLogs', BalanceLog::class),
+            HasMany::make(__("Quota Log"), 'quotaLogs', QuotaLog::class),
             // HasMany::make(__('Service Order'), 'serviceOrders', ServiceOrder::class)
         ]);
     }

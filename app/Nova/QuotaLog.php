@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class QuotaLog extends Resource
@@ -52,6 +54,15 @@ class QuotaLog extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            BelongsTo::make(__('Store'), 'store', Store::class),
+            BelongsTo::make(__('User'), 'user', User::class),
+            // Select::make(__('Type'), 'type')->options(\App\Models\BalanceLog::typeOptions())->displayUsingLabels(),
+            $this->money(__('Amount'), 'amount'),
+            $this->money(__('Balance'), 'balance'),
+            Text::make(__('Comment'), 'comment'),
+            // Boolean::make(__('Open'), 'open'),
+            // DateTime::make(__('Created At'), 'created_at')
+            $this->datetime()
         ];
     }
 

@@ -13,7 +13,7 @@ function cache1($tags, $key, $callback, $expires = null)
         $str = json_encode($value);
         // \Log::debug(" +++++++ refresh cache $key $str");
         $cache->put($key, $str, $expires ?? 3600 * 24);
-        return $value;
+        return $str;
     }
 }
 
@@ -40,7 +40,7 @@ function hash2array($hash)
 
 function money($val)
 {
-    return !$val ? null : sprintf(__('RMB')."%.2f", $val);
+    return !$val ? "-" : sprintf(__('RMB')."%.2f", $val);
 }
 
 function storage_url($img)

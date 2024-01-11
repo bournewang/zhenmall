@@ -220,7 +220,7 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsTo(User::class, 'referer_id');
     }
 
-    public function juniors()
+    public function recommands()
     {
         return $this->hasMany(User::class, 'referer_id');
     }
@@ -257,8 +257,8 @@ class User extends Authenticatable implements HasMedia
 
     public function members()
     {
-        $members = $this->juniors;
-        foreach ($this->juniors as $user) {
+        $members = $this->recommands;
+        foreach ($this->recommands as $user) {
             $members = $members->concat($user->members());
         }
         return $members;

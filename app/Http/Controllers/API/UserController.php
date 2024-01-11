@@ -155,6 +155,22 @@ class UserController extends ApiBaseController
     }
 
     /**
+     * 获取直推用户网体数据
+     *
+     * @OA\Get(
+     *  path="/api/user/direct-team",
+     *  tags={"User"},
+     *  @OA\Response(response=200,description="successful operation"),
+     *  security={{ "api_key":{} }}
+     * )
+     */
+    public function directTeam()
+    {
+        return $this->sendResponse(UserHelper::directTeam($this->user));
+    }
+
+
+    /**
      * 获取直推排行榜
      *
      * @OA\Get(

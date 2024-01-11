@@ -34,7 +34,7 @@ class UserHelper
             $team = DB::table('relation')->where('path', 'like', "%,$user->id,%");
             $yesterday_members = User::whereIn('id', $team->pluck('user_id'))->whereBetween("created_at", [Carbon::today()->subDay(1), Carbon::today()])->count();
             $team_members = $team->count();
-            $direct_members = $user->juniors->count();
+            $direct_members = $user->recommands->count();
             $yesterday_income = $user->balanceLogs()->whereBetween("created_at", [Carbon::today()->subDay(1), Carbon::today()])->where('type', BalanceLog::DEPOSIT)->sum('amount');
             $today_income = $user->balanceLogs()->where("created_at", ">", Carbon::today())->where('type', BalanceLog::DEPOSIT)->sum('amount');
             $total_income = $user->balanceLogs()->where('type', BalanceLog::DEPOSIT)->sum('amount');
@@ -50,9 +50,24 @@ class UserHelper
         return json_decode($str);
     }
 
+    static public function directTeam($user)
+    {
+        $str = cache1(tag_user($user), tag_user($user).".direct-team", function()use($user){
+            $data = [];
+            foreach ($user->recommands as $member) {
+                $data[] = [
+                    "head" => ["img" => $member->avatar, "label" => $member->nickname ?? $member->mobile],
+                    "data" => self::team($member)
+                ];
+            }
+            return $data;
+        }, 3600 * 12);
+        return json_decode($str);
+    }
+
     static public function directRange()
     {
-        $res = cache1("direct-members", "direct-members-range", function(){
+        $str = cache1("direct-members", "direct-members-range", function(){
             $res = DB::table('users as u1')
                 ->join("users as u2", "u1.referer_id", "=", "u2.id")
                 ->selectRaw("count(u1.id) as direct_members, u1.referer_id, u2.nickname, u2.mobile")
